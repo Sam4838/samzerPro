@@ -1,0 +1,72 @@
+﻿@model IEnumerable<GTM.Models.MessageTbl>
+
+    @{
+        //ViewBag.Title = "GetMsg";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    <head>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css" />
+        <link rel="stylesheet" type="text/css" href="datatables/Buttons-1.4.2/css/buttons.bootstrap4.min.css" />
+    </head>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Message)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Message)
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    <script>
+
+
+        $(document).ready(function () {
+
+            //$(document).on("click", "#myTable tbody tr", function () {
+            //    var getRowId = $(this).closest('tr').attr("EmpCode");
+            //    alert("I am a " + getRowId);
+            //});
+
+            $('.table').DataTable({
+                dom: '<"toolbar">Bfrtip',
+
+                "searching": true,
+                "pageLength": 10,
+                "lengthChange": false,
+                "scrollCollapse": true,
+
+            });
+            $("div.toolbar").html('<button class="btn btn-info" id="add-new-btn-id">Add New</button>');
+        })
+    </script>

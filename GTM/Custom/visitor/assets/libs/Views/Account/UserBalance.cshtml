@@ -1,0 +1,67 @@
+﻿@model GTM.Models.RegistrationTbl
+@{
+    ViewBag.Title = "UserBalance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="wrapper">
+
+    <div class="content-wrapper">
+
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Current</a></li>
+                            <li class="breadcrumb-item active">Balance</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+
+        <section class="content">
+            <div class="container-fluid">
+                <!-- COLOR PALETTE -->
+                <div class="card card-default color-palette-box">
+                 
+                    <div class="card-body">
+                       
+                            <div class="row">
+
+                                <div class="col-md-12 text-center">
+                                    <h2>Revenue</h2>
+                                    <hr />
+@*                                 <input type="hidden" id="user-balance-id" />*@
+                                    <h3  id="user-balance-id"><b style="font-size: xx-large; font-weight: lighter">@Model.balance</b> _Pkr</h3>
+                                    
+                                </div>
+                      <div class="col-md-4"></div>
+                                     <div class="col-md-4 text-center">
+                                         <button class="btn btn-primary" style="width: 250px;" onclick="location.href = '/Home/withdrawRec'" >Withdraw</button>
+
+                           </div>
+                                <div class="col-md-4"></div>
+
+                            </div>
+                    </div>
+                    <!-- /.card-body -->
+                    @*</form>*@
+                </div>
+            </div>
+
+
+            <!-- START ALERTS AND CALLOUTS -->
+            <h5 class="mt-4 mb-2">
+                <a href="/Home/Index">Back to home</a>
+            </h5>
+            <br />
+        </section>
+    </div>
+</div>
+

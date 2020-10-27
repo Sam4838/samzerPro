@@ -1,0 +1,100 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="wrapper">
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">User Packages</a></li>
+                            <li class="breadcrumb-item active"> List</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="card card-default color-palette-box">
+                    <div class="card-body">
+                        <table class="table table-striped table-bordered  table-hover " style=" margin-top:0px">
+                            <thead>
+                                <tr>
+                                    <th>User Email</th>
+                                    <th>Package Title</th>
+                                    <th>Phone No.</th>
+                                    <th>isPaid</th>
+                                    <th>Actions</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.usp)
+                                {
+                                    <tr>
+                                        <td>@item.RegistrationTbl.UserName</td>
+                                        <td>@item.PackagesTbl.Title</td>
+                                        <td>@item.phoneNo</td>
+                                        <td>@item.isPaid</td>
+                                        <td>
+                                            <a href="@Url.Action("allowUserPac", "Admin", new { uid = item.userId, id = item.id})">Allow</a> |
+                                            <a href="@Url.Action("disUserPac", "Admin", new { uid = item.userId, id = item.id })">Disallow</a> |
+                                            <a href="@Url.Action("delUserPac", "Admin", new { uid = item.userId, id = item.id })">Delete</a>
+                                            </td>
+
+                                        @*<td>
+                                            <a href="@Url.Action("allowUserPac", "Admin", new { uid = item.userId})">Allow</a> |
+                                            <a href="@Url.Action("disUserPac", "Admin", new { uid = item.userId})">Disallow</a> |
+                                            <a href="@Url.Action("delUserPac", "Admin", new { uid = item.userId})">Delete</a>
+                                        </td>*@
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+@*@section Styles{*@
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css" href="datatables/Buttons-1.4.2/css/buttons.bootstrap4.min.css" />
+    <style>
+        .toolbar {
+            float: left;
+        }
+    </style>
+
+@*}*@
+
+@*@section Scripts{*@
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.table').DataTable({
+                dom: '<"toolbar">Bfrtip',
+                "searching": true,
+                "pageLength": 50,
+                "lengthChange": false,
+                "scrollCollapse": true,
+
+            });
+
+            @*$("div.toolbar").html('<button class="btn btn-info" id="add-new-btn-id">Add New</button>');
+            $('#add-new-btn-id').on('click', function () {
+
+                location.href = '@Url.Action("Create", "Packages")';
+            })*@
+        });
+    </script>
+
+@*}*@

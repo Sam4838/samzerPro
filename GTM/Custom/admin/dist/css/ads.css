@@ -1,0 +1,75 @@
+﻿body {
+}
+/*Advertid=sement image Css*/
+.ads-display-image img{
+    border: 1px solid #ededed;
+    border-radius: 3px;
+    height: 185px;
+    width: 240px;
+}
+
+    .ads-display-image img {
+        cursor: pointer;
+    }
+
+.ads-display-image:hover .upload-photo {
+    transform: scaleY(1);
+
+}
+
+.ads-display-image .upload-photo:before {
+    content: 'Choose Photo';
+    color: #fff;
+    position: absolute;
+    opacity: 1;
+    height: 0px;
+    bottom: 32px;
+    left: 70px;
+    font-size: 18px;
+}
+    .ads-display-image .upload-photo {
+    background-color: #242424;
+    opacity: 0.4;
+    position: absolute;
+    width: 76%;
+    height: 35px;
+    bottom: 15px;
+    left: 37px;
+    cursor: pointer;
+    transform: scaleY(0);
+    transition:0.5s;
+    transform-origin:bottom;
+
+}
+        .ads-display-image .upload-photo img {
+            height: 20px;
+            width: 20px;
+            position: absolute;
+            color: #fff;
+            top: 7px;
+            left: 40px;
+            border: 0px;
+        }
+
+.hidden {
+    transform: scaleY(0);
+}
+.remove-photo {
+    position: absolute;
+    top: 33px;
+    right: 39px;
+    /*border: 2px solid #ddd;*/
+    padding: 5px;
+    cursor:pointer;
+
+}
+    .remove-photo b {
+        color: #cbcbcb;
+    }
+
+    .remove-photo:hover b{
+        color: #808080;
+    }
+
+
+

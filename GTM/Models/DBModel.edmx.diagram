@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cad0833b54bb4f04a141eab5af144494" Name="Diagram1">
+        <EntityTypeShape EntityType="makemoneyModel.AdvertiseTbl" Width="1.5" PointX="3.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="makemoneyModel.CityTbl" Width="1.5" PointX="10.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="makemoneyModel.CountryTbl" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="makemoneyModel.MessageTbl" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="makemoneyModel.PackagesTbl" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="makemoneyModel.PkgPaymentDetailsTbl" Width="1.5" PointX="8.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="makemoneyModel.RegistrationTbl" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="makemoneyModel.StateTbl" Width="1.5" PointX="8" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="makemoneyModel.userPackage" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="makemoneyModel.userWatchList" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="makemoneyModel.WithdrawTbl" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="makemoneyModel.FK__userWatchL__adId__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="makemoneyModel.FK_CityTbl_StateTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="makemoneyModel.FK_StateTbl_CountryTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="makemoneyModel.FK__userPacka__pkgId__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="makemoneyModel.FK__userWatch__packa__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="makemoneyModel.FK__userPacka__userI__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="makemoneyModel.FK__userWatch__userI__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="makemoneyModel.FK__WithdrawT__userI__286302EC" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

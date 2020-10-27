@@ -1,0 +1,328 @@
+﻿@model GTM.Models.RegistrationTbl
+
+@{
+    ViewBag.Title = "UpdateProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link href="~/Custom/admin/css/usrProfile.css" rel="stylesheet" />
+</head>
+
+<div class="wrapper">
+
+    <div class="content-wrapper">
+
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    @*<div class="col-sm-6">
+                            <h1>Inline Charts</h1>
+                        </div>*@
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Update</a></li>
+                            <li class="breadcrumb-item active">Profile</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+
+        <section class="content">
+            <div class="container-fluid">
+                <!-- COLOR PALETTE -->
+                <div class="card card-default color-palette-box">
+                    @*<div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-tag"></i>
+                                Color Palette
+                            </h3>
+                        </div>*@
+                    <div class="card-body">
+
+                        @*@using (Html.BeginForm("CreateAds", "Admin", new { enctype = "multipart/form-data" }))
+                            {*@
+                        <form action="UpdateProfile" method="post" enctype="multipart/form-data">
+                            @Html.AntiForgeryToken()
+
+
+                            <div class="row">
+
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+
+                                        <label>User Name:</label>
+
+                                        @Html.DisplayFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                    </div>
+  
+                                    <div class="form-group">
+                                        <label>Perspective:</label>
+                                        @Html.DisplayFor(model => model.Perspective, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Perspective, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.HiddenFor(model => model.UserId)
+                                    @Html.HiddenFor(model => model.ProfileImgPath)
+                                    @Html.HiddenFor(model => model.balance)
+                                    @Html.HiddenFor(model => model.IsAgreeTerms)
+                                    @Html.HiddenFor(model => model.Perspective)
+                                    @Html.HiddenFor(model => model.UserName)
+
+                                    @*<div class="form-group">
+
+                <label>User Name:</label>
+
+                @Html.DisplayFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>*@
+
+                                    <div class="form-group">
+                                        <label>Gender:</label>&ensp;
+
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Gender, "Male", new { @name = "gender" })
+                                            Male
+
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Gender, "Female", new { @name = "gender" })
+                                            Female
+
+                                        </label>
+
+                                    </div>
+
+                                    @*<div class="form-group">
+                <label>Perspective</label>
+                @Html.DisplayFor(model => model.Perspective, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Perspective, "", new { @class = "text-danger" })
+            </div>*@
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", id = "user-pwd" } })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Confirm Password</label>
+                                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", id = "confirm-pwd" } })
+                                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                    </div>
+                                    <span id="pwdMess"></span>
+                                    <br />
+                                    <div class="form-group ">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input class="btn btn-primary" style="width: 250px;" type="submit" value="Update" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class=" col-md-4 ">
+                                    <input type="hidden" name="UserId" />
+
+                                    <input type="file" class="hidden" id="browse-img" accept="image/*" name="UserImageFile" />
+
+                                    <div class="ads-display-image text-center">
+                                        <img class="ads-default-img img-fluid img-responsive"
+                                             id="uploaded-img"
+                                             @*src="~/Custom/Visitor/imges/notAvlImage.jpg"*@
+                                             src="@Url.Content(Model.ProfileImgPath)"
+                                             alt="User profile picture">
+
+                                        <div class="upload-photo">
+                                            <img src="~/Custom/Visitor/imges/chooseImgIcon.png" />
+                                        </div>
+
+
+                                        @*<p class="image-desc text-center">Allowed image size: 723 X 768</p>*@
+                                    </div>
+
+                                    @*<div class="remove-photo">
+                                        <b>X</b>
+                                    </div>*@
+                                   
+                                </div>
+
+                            </div>
+                            @*<br />*@
+                            @*<div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input class="btn btn-primary" style="width: 250px;" type="submit" value="Update" />
+                                </div>
+                            </div>*@
+
+                            @*}*@
+                        </form>
+
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+
+
+            <!-- START ALERTS AND CALLOUTS -->
+            <h5 class="mt-4 mb-2">
+                <a href="/Admin/GetAdsList">Back to list</a>
+            </h5>
+            <br />
+        </section>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="~/Custom/admin/js/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="~/Custom/admin/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="~/Custom/admin/js/adminlte.min.js"></script>
+
+<script type="text/javascript">
+    $(".upload-photo").click(function () {
+        //alert('working');
+        $('#browse-img').trigger('click');
+
+    })
+
+    $('#browse-img').change(function () {
+
+        if (this.files && this.files[0]) {
+            var fileReader = new FileReader();
+            fileReader.readAsDataURL(this.files[0]);
+            fileReader.onload = function (x) {
+                $('#uploaded-img').attr('src', x.target.result)
+            }
+
+        }
+    })
+
+    $('.remove-photo').click(function () {
+        $('#uploaded-img').attr('src', "/uploads/notAvlImage.jpg");
+        $('#AdsFilePath').val("/uploads/notAvlImage.jpg");
+
+
+        //alert('working..');
+    })
+
+    $("#confirm-pwd").keyup(function () {
+
+        var pwd = $("#user-pwd").val();
+        var confPwd = $("#confirm-pwd").val();
+
+        if (pwd != confPwd) {
+
+            $("#pwdMess").html('<font color="Red">Passwords are not matching.. Try again!</font>');
+            $("#pwdMess").css("color", "Red");
+            return false;
+        }
+        else {
+            $("#pwdMess").html('');
+            return true;
+        }
+        //alert("working");
+    })
+
+
+
+</script>
+
+
+
+
+
+@*<h2>UpdateProfile</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>RegistrationTbl</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.UserId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProfileImgPath, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProfileImgPath)
+                @Html.ValidationMessageFor(model => model.ProfileImgPath)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gender, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Gender)
+                @Html.ValidationMessageFor(model => model.Gender)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Perspective, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Perspective)
+                @Html.ValidationMessageFor(model => model.Perspective)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ConfirmPassword)
+                @Html.ValidationMessageFor(model => model.ConfirmPassword)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsAgreeTerms, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsAgreeTerms)
+                @Html.ValidationMessageFor(model => model.IsAgreeTerms)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.balance, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.balance)
+                @Html.ValidationMessageFor(model => model.balance)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

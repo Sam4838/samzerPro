@@ -1,0 +1,164 @@
+﻿
+@model IEnumerable<GTM.Models.RegistrationTbl>
+
+@{
+    ViewBag.Title = "GetUsersList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    .toolbar {
+        float: left;
+    }
+</style>
+
+<head>
+    <meta charset="utf-8">
+    @*<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+        <script type="text/javascript" src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>*@
+
+    <link href="~/Custom/admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link href="~/Custom/admin/assets/libs/datatables.net-bs4/css/responsive.dataTables.min.css" rel="stylesheet" />
+
+</head>
+
+<div class="wrapper">
+
+    <div class="content-wrapper">
+
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">User's</a></li>
+                            <li class="breadcrumb-item active"> List</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+
+        <section class="content">
+            <div class="container-fluid">
+                <!-- COLOR PALETTE -->
+                <div class="card card-default color-palette-box">
+                    @*<div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-tag"></i>
+                                Color Palette
+                            </h3>
+                        </div>*@
+                    <div class="card-body">
+
+                        @*<input type="hidden" name="AdvertiseId" />
+                            <input type="hidden" name="AdsFilePath" />*@
+
+                        <table class="table table-striped table-bordered  table-hover " style=" margin-top:0px">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Email 
+                                    </th>
+
+                                    <th>
+                                        Gender
+                                    </th>
+
+                                    <th>
+                                        Perspective
+                                    </th>
+                                </tr>
+
+                            </thead>
+                          
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                <tr style="text-transform: uppercase" onclick="getUserDetails('@item.UserId')">
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FName)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserName)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Gender)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Perspective)
+                                    </td>
+
+                                </tr>
+                                }
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+
+
+            <!-- START ALERTS AND CALLOUTS -->
+            <h5 class="mt-4 mb-2">
+                <a href="/Admin/Index">Back</a>
+            </h5>
+            <br />
+        </section>
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="~/Custom/admin/js/jquery.min.js"></script>
+
+<!-- Bootstrap 4 -->
+<script src="~/Custom/admin/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="~/Custom/admin/js/adminlte.min.js"></script>
+
+@*@section styles {*@
+@*<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="datatables/Buttons-1.4.2/css/buttons.bootstrap4.min.css" />*@
+
+@*}*@
+
+@*@section scripts{*@
+@*<script type="text/javascript" src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>*@
+<script src="~/Custom/admin/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/Custom/admin/assets/libs/datatables.net-bs4/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('.table').DataTable({
+                //dom: '<"toolbar">Bfrtip',
+                "searching": true,
+                "pageLength": 50,
+                "lengthChange": false,
+                "scrollCollapse": true,
+
+            });
+
+        })
+
+        function getUserDetails(userId) {
+
+            window.location = '@Url.Action("GetUsersDetails", "Admin")/' + userId;
+        }
+
+</script>
+
+@*}*@

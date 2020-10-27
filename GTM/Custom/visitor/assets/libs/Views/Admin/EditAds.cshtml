@@ -1,0 +1,186 @@
+﻿@model GTM.Models.AdvertiseTbl
+
+@{
+    //ViewBag.Title = "EditAds";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<head>
+    <link href="~/Custom/admin/css/ads.css" rel="stylesheet" />
+</head>
+
+<div class="wrapper">
+
+    <div class="content-wrapper">
+
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    @*<div class="col-sm-6">
+                            <h1>Inline Charts</h1>
+                        </div>*@
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            @*<li class="breadcrumb-item"><a href="#">Home</a></li>*@
+                            <li class="breadcrumb-item active">Create New</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+
+        <section class="content">
+            <div class="container-fluid">
+                <!-- COLOR PALETTE -->
+                <div class="card card-default color-palette-box">
+                    @*<div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-tag"></i>
+                                Color Palette
+                            </h3>
+                        </div>*@
+                    <div class="card-body">
+
+                        @*@using (Html.BeginForm("CreateAds", "Admin", new { enctype = "multipart/form-data" }))
+                            {*@
+                        <form action="EditAds" method="post" enctype="multipart/form-data">
+                            @Html.AntiForgeryToken()
+
+
+                            <div class="row">
+
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+                                <div class="col-md-4">
+                                    @Html.HiddenFor(model => model.AdvertiseId)
+                                    @Html.HiddenFor(model => model.AdsFilePath)
+
+
+                                    <div class="form-group">
+
+                                        <label>Title</label>
+
+                                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Description</label>
+
+                                        @*<textarea class="form-control" rows="3" cols="8" name="Description" placeholder="Your text here.." required></textarea>*@
+
+                                        @*<textarea class="form-control" rows="3" cols="8" name="@Model.Description" placeholder="Describe your description here.." required></textarea>*@
+
+                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+
+
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                    </div>
+
+
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label>Unit Price</label>
+                                    @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+                                </div>
+
+
+                                <div class=" col-md-4">
+                                    <input type="hidden" name="AdvertiseId" />
+
+                                    <input type="file" class="hidden" id="browse-img" accept="image/*" name="AdsImageFile" />
+
+                                    <div class="ads-display-image text-center">
+                                        <img class="ads-default-img img-fluid img-responsive"
+                                             id="uploaded-img"
+                                             @*src="~/Custom/Visitor/imges/notAvlImage.jpg"*@
+                                             src="@Url.Content(Model.AdsFilePath)"
+                                             alt="User profile picture">
+
+                                        <div class="upload-photo">
+                                            <img src="~/Custom/Visitor/imges/chooseImgIcon.png" />
+                                        </div>
+
+
+                                        @*<p class="image-desc text-center">Allowed image size: 723 X 768</p>*@
+                                    </div>
+
+                                    <div class="remove-photo">
+                                        <b>X</b>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            @*<br />*@
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Save" class="btn btn-info" />
+                                    @*<button class="btn btn-link" onclick="backToAdsDtl()">Cancel</button>*@
+                                </div>
+                            </div>
+
+                            @*}*@
+                        </form>
+
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+
+
+            <!-- START ALERTS AND CALLOUTS -->
+            <h5 class="mt-4 mb-2">
+                <a href="/Admin/GetAdsList">Back to list</a>
+            </h5>
+            <br />
+        </section>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="~/Custom/admin/js/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="~/Custom/admin/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="~/Custom/admin/js/adminlte.min.js"></script>
+
+<script type="text/javascript">
+    $(".upload-photo").click(function () {
+        //alert('working');
+        $('#browse-img').trigger('click');
+
+    })
+
+    $('#browse-img').change(function () {
+
+        if (this.files && this.files[0]) {
+            var fileReader = new FileReader();
+            fileReader.readAsDataURL(this.files[0]);
+            fileReader.onload = function (x) {
+                $('#uploaded-img').attr('src', x.target.result)
+            }
+
+        }
+    })
+
+    $('.remove-photo').click(function () {
+        $('#uploaded-img').attr('src', "/uploads/notAvlImage.jpg");
+        $('#AdsFilePath').val("/uploads/notAvlImage.jpg");
+
+        
+        //alert('working..');
+    })
+
+
+</script>
+
+

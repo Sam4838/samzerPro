@@ -1,0 +1,99 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Make Money-PK |Recover Password</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Custom/admin/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="~/Custom/admin/css/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Custom/admin/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition login-page">
+    @*<div class="row text-center">
+
+        <div class="col-md-12">
+            <span style="color: green; font-size: x-large; font-family: monospace; font-weight: 600">@ViewBag.MailSuccess</span>
+
+        </div>
+
+    </div>*@  
+    <section id="wrapper" class="login-register">
+        <div class="login-box">
+            <div class="white-box">
+                <form class="form-horizontal" action="RecoverPswd" id="recoverform" method="post">
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <h3>Recover Password</h3>
+                        <p class="text-muted">Enter your Email & instructions will be sent to you!</p>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <input class="form-control" type="text" required="" name="UserName" placeholder="Enter your Email" id="user-email" onkeyup="checkUsers()">
+                    </div>
+                    <span id="spanmess"></span>
+
+                </div>
+
+                <div class="form-group text-center m-t-20">
+                    <div class="col-xs-12">
+                        <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit" @*onclick="checkUsers()"*@>Reset</button>
+                    </div>
+                </div>
+
+                </form>
+                <span style="color: green; font-family: monospace; font-size: 12px">@ViewBag.MailSuccess</span>
+               <br />
+                <a href="/Account/Login">Back to Login</a>
+            </div>
+        </div>
+
+    </section>
+    <!-- jQuery -->
+    <script src="~/Custom/admin/js/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Custom/admin/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Custom/admin/js/adminlte.min.js"></script>
+    <script type="text/javascript">
+        function checkUsers() {
+            var userEmail = $('#user-email').val();
+            $.post("@Url.Action("IsUserExists", "Account")",
+            {
+                userdata: $("#user-email").val()
+            },
+            function (data) {
+
+                if (data == 0) {
+
+                    $("#spanmess").html('<font color:"Red">' + userEmail + '&nbsp; is not available in our database!</font>');
+                    $("#user-email").css("border-color", "Red");
+                }
+                else {
+
+                    $("#spanmess").html('<font color:"Green">Available!</font>');
+
+                    $("#user-email").css("border-color", "Green");
+
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

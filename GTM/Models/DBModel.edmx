@@ -1,0 +1,716 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="makemoneyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdvertiseTbl">
+          <Key>
+            <PropertyRef Name="AdvertiseId" />
+          </Key>
+          <Property Name="AdvertiseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="AdsFilePath" Type="nvarchar(max)" />
+          <Property Name="UnitPrice" Type="nvarchar" MaxLength="50" />
+          <Property Name="delFlag" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="CityTbl">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="50" />
+          <Property Name="StateId" Type="int" />
+        </EntityType>
+        <EntityType Name="CountryTbl">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MessageTbl">
+          <Key>
+            <PropertyRef Name="MsgId" />
+          </Key>
+          <Property Name="MsgId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="varchar(max)" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Message" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="PackagesTbl">
+          <Key>
+            <PropertyRef Name="packageId" />
+          </Key>
+          <Property Name="packageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="amount" Type="float" />
+          <Property Name="validity" Type="int" />
+          <Property Name="peradClick" Type="float" />
+          <Property Name="perdayEarning" Type="float" />
+          <Property Name="referalBonus" Type="float" />
+          <Property Name="minWithdraw" Type="float" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="dailyAds" Type="int" />
+          <Property Name="PkgImgPath" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PkgPaymentDetailsTbl">
+          <Key>
+            <PropertyRef Name="PaymentDetailsId" />
+          </Key>
+          <Property Name="PaymentDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PkgName" Type="varchar" MaxLength="50" />
+          <Property Name="ReferId" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentMethod" Type="varchar" MaxLength="50" />
+          <Property Name="MobileAcountNo" Type="nvarchar(max)" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RegistrationTbl">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar(max)" />
+          <Property Name="ProfileImgPath" Type="nvarchar(max)" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="Perspective" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="ConfirmPassword" Type="varchar" MaxLength="50" />
+          <Property Name="IsAgreeTerms" Type="bit" />
+          <Property Name="balance" Type="float" />
+          <Property Name="FName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StateTbl">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="50" />
+          <Property Name="CountryId" Type="int" />
+        </EntityType>
+        <EntityType Name="userPackages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="userId" Type="int" />
+          <Property Name="pkgId" Type="int" />
+          <Property Name="phoneNo" Type="varchar" MaxLength="100" />
+          <Property Name="isPaid" Type="char" MaxLength="1" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="endDate" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="userWatchList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" />
+          <Property Name="adId" Type="int" />
+          <Property Name="showDate" Type="varchar" MaxLength="50" />
+          <Property Name="isWatch" Type="char" MaxLength="1" />
+          <Property Name="packageId" Type="int" />
+        </EntityType>
+        <EntityType Name="WithdrawTbl">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" />
+          <Property Name="phoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="TotalAmount" Type="float" />
+          <Property Name="isPaid" Type="char" MaxLength="1" />
+          <Property Name="reqDate" Type="varchar" MaxLength="20" />
+          <Property Name="payDate" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__userPacka__pkgId__35BCFE0A">
+          <End Role="PackagesTbl" Type="Self.PackagesTbl" Multiplicity="0..1" />
+          <End Role="userPackages" Type="Self.userPackages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackagesTbl">
+              <PropertyRef Name="packageId" />
+            </Principal>
+            <Dependent Role="userPackages">
+              <PropertyRef Name="pkgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__userPacka__userI__34C8D9D1">
+          <End Role="RegistrationTbl" Type="Self.RegistrationTbl" Multiplicity="0..1" />
+          <End Role="userPackages" Type="Self.userPackages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationTbl">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="userPackages">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__userWatch__packa__25869641">
+          <End Role="PackagesTbl" Type="Self.PackagesTbl" Multiplicity="0..1" />
+          <End Role="userWatchList" Type="Self.userWatchList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackagesTbl">
+              <PropertyRef Name="packageId" />
+            </Principal>
+            <Dependent Role="userWatchList">
+              <PropertyRef Name="packageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__userWatch__userI__267ABA7A">
+          <End Role="RegistrationTbl" Type="Self.RegistrationTbl" Multiplicity="0..1" />
+          <End Role="userWatchList" Type="Self.userWatchList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationTbl">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="userWatchList">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__userWatchL__adId__276EDEB3">
+          <End Role="AdvertiseTbl" Type="Self.AdvertiseTbl" Multiplicity="0..1" />
+          <End Role="userWatchList" Type="Self.userWatchList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdvertiseTbl">
+              <PropertyRef Name="AdvertiseId" />
+            </Principal>
+            <Dependent Role="userWatchList">
+              <PropertyRef Name="adId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WithdrawT__userI__286302EC">
+          <End Role="RegistrationTbl" Type="Self.RegistrationTbl" Multiplicity="0..1" />
+          <End Role="WithdrawTbl" Type="Self.WithdrawTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationTbl">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="WithdrawTbl">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CityTbl_StateTbl">
+          <End Role="StateTbl" Type="Self.StateTbl" Multiplicity="0..1" />
+          <End Role="CityTbl" Type="Self.CityTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateTbl">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="CityTbl">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateTbl_CountryTbl">
+          <End Role="CountryTbl" Type="Self.CountryTbl" Multiplicity="0..1" />
+          <End Role="StateTbl" Type="Self.StateTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryTbl">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="StateTbl">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="makemoneyModelStoreContainer">
+          <EntitySet Name="AdvertiseTbl" EntityType="Self.AdvertiseTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CityTbl" EntityType="Self.CityTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CountryTbl" EntityType="Self.CountryTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessageTbl" EntityType="Self.MessageTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PackagesTbl" EntityType="Self.PackagesTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PkgPaymentDetailsTbl" EntityType="Self.PkgPaymentDetailsTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistrationTbl" EntityType="Self.RegistrationTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateTbl" EntityType="Self.StateTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userPackages" EntityType="Self.userPackages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userWatchList" EntityType="Self.userWatchList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WithdrawTbl" EntityType="Self.WithdrawTbl" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__userPacka__pkgId__35BCFE0A" Association="Self.FK__userPacka__pkgId__35BCFE0A">
+            <End Role="PackagesTbl" EntitySet="PackagesTbl" />
+            <End Role="userPackages" EntitySet="userPackages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userPacka__userI__34C8D9D1" Association="Self.FK__userPacka__userI__34C8D9D1">
+            <End Role="RegistrationTbl" EntitySet="RegistrationTbl" />
+            <End Role="userPackages" EntitySet="userPackages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userWatch__packa__25869641" Association="Self.FK__userWatch__packa__25869641">
+            <End Role="PackagesTbl" EntitySet="PackagesTbl" />
+            <End Role="userWatchList" EntitySet="userWatchList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userWatch__userI__267ABA7A" Association="Self.FK__userWatch__userI__267ABA7A">
+            <End Role="RegistrationTbl" EntitySet="RegistrationTbl" />
+            <End Role="userWatchList" EntitySet="userWatchList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userWatchL__adId__276EDEB3" Association="Self.FK__userWatchL__adId__276EDEB3">
+            <End Role="AdvertiseTbl" EntitySet="AdvertiseTbl" />
+            <End Role="userWatchList" EntitySet="userWatchList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WithdrawT__userI__286302EC" Association="Self.FK__WithdrawT__userI__286302EC">
+            <End Role="RegistrationTbl" EntitySet="RegistrationTbl" />
+            <End Role="WithdrawTbl" EntitySet="WithdrawTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CityTbl_StateTbl" Association="Self.FK_CityTbl_StateTbl">
+            <End Role="StateTbl" EntitySet="StateTbl" />
+            <End Role="CityTbl" EntitySet="CityTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateTbl_CountryTbl" Association="Self.FK_StateTbl_CountryTbl">
+            <End Role="CountryTbl" EntitySet="CountryTbl" />
+            <End Role="StateTbl" EntitySet="StateTbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="makemoneyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdvertiseTbl">
+          <Key>
+            <PropertyRef Name="AdvertiseId" />
+          </Key>
+          <Property Name="AdvertiseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdsFilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UnitPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="delFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="userWatchLists" Relationship="Self.FK__userWatchL__adId__276EDEB3" FromRole="AdvertiseTbl" ToRole="userWatchList" />
+        </EntityType>
+        <EntityType Name="CityTbl">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StateId" Type="Int32" />
+          <NavigationProperty Name="StateTbl" Relationship="Self.FK_CityTbl_StateTbl" FromRole="CityTbl" ToRole="StateTbl" />
+        </EntityType>
+        <EntityType Name="CountryTbl">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="StateTbls" Relationship="Self.FK_StateTbl_CountryTbl" FromRole="CountryTbl" ToRole="StateTbl" />
+        </EntityType>
+        <EntityType Name="MessageTbl">
+          <Key>
+            <PropertyRef Name="MsgId" />
+          </Key>
+          <Property Name="MsgId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PackagesTbl">
+          <Key>
+            <PropertyRef Name="packageId" />
+          </Key>
+          <Property Name="packageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="amount" Type="Double" />
+          <Property Name="validity" Type="Int32" />
+          <Property Name="peradClick" Type="Double" />
+          <Property Name="perdayEarning" Type="Double" />
+          <Property Name="referalBonus" Type="Double" />
+          <Property Name="minWithdraw" Type="Double" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dailyAds" Type="Int32" />
+          <NavigationProperty Name="userPackages" Relationship="Self.FK__userPacka__pkgId__35BCFE0A" FromRole="PackagesTbl" ToRole="userPackages" />
+          <NavigationProperty Name="userWatchLists" Relationship="Self.FK__userWatch__packa__25869641" FromRole="PackagesTbl" ToRole="userWatchList" />
+          <Property Name="PkgImgPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PkgPaymentDetailsTbl">
+          <Key>
+            <PropertyRef Name="PaymentDetailsId" />
+          </Key>
+          <Property Name="PaymentDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PkgName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReferId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileAcountNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RegistrationTbl">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProfileImgPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Perspective" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsAgreeTerms" Type="Boolean" />
+          <Property Name="balance" Type="Double" />
+          <NavigationProperty Name="userPackages" Relationship="Self.FK__userPacka__userI__34C8D9D1" FromRole="RegistrationTbl" ToRole="userPackages" />
+          <NavigationProperty Name="userWatchLists" Relationship="Self.FK__userWatch__userI__267ABA7A" FromRole="RegistrationTbl" ToRole="userWatchList" />
+          <NavigationProperty Name="WithdrawTbls" Relationship="Self.FK__WithdrawT__userI__286302EC" FromRole="RegistrationTbl" ToRole="WithdrawTbl" />
+          <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="StateTbl">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountryId" Type="Int32" />
+          <NavigationProperty Name="CityTbls" Relationship="Self.FK_CityTbl_StateTbl" FromRole="StateTbl" ToRole="CityTbl" />
+          <NavigationProperty Name="CountryTbl" Relationship="Self.FK_StateTbl_CountryTbl" FromRole="StateTbl" ToRole="CountryTbl" />
+        </EntityType>
+        <EntityType Name="userPackage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="userId" Type="Int32" />
+          <Property Name="pkgId" Type="Int32" />
+          <Property Name="phoneNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="isPaid" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="endDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PackagesTbl" Relationship="Self.FK__userPacka__pkgId__35BCFE0A" FromRole="userPackages" ToRole="PackagesTbl" />
+          <NavigationProperty Name="RegistrationTbl" Relationship="Self.FK__userPacka__userI__34C8D9D1" FromRole="userPackages" ToRole="RegistrationTbl" />
+        </EntityType>
+        <EntityType Name="userWatchList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="adId" Type="Int32" />
+          <Property Name="showDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isWatch" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="packageId" Type="Int32" />
+          <NavigationProperty Name="AdvertiseTbl" Relationship="Self.FK__userWatchL__adId__276EDEB3" FromRole="userWatchList" ToRole="AdvertiseTbl" />
+          <NavigationProperty Name="PackagesTbl" Relationship="Self.FK__userWatch__packa__25869641" FromRole="userWatchList" ToRole="PackagesTbl" />
+          <NavigationProperty Name="RegistrationTbl" Relationship="Self.FK__userWatch__userI__267ABA7A" FromRole="userWatchList" ToRole="RegistrationTbl" />
+        </EntityType>
+        <EntityType Name="WithdrawTbl">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="phoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="TotalAmount" Type="Double" />
+          <Property Name="isPaid" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="reqDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="payDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RegistrationTbl" Relationship="Self.FK__WithdrawT__userI__286302EC" FromRole="WithdrawTbl" ToRole="RegistrationTbl" />
+        </EntityType>
+        <Association Name="FK__userWatchL__adId__276EDEB3">
+          <End Role="AdvertiseTbl" Type="Self.AdvertiseTbl" Multiplicity="0..1" />
+          <End Role="userWatchList" Type="Self.userWatchList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdvertiseTbl">
+              <PropertyRef Name="AdvertiseId" />
+            </Principal>
+            <Dependent Role="userWatchList">
+              <PropertyRef Name="adId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CityTbl_StateTbl">
+          <End Role="StateTbl" Type="Self.StateTbl" Multiplicity="0..1" />
+          <End Role="CityTbl" Type="Self.CityTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateTbl">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="CityTbl">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateTbl_CountryTbl">
+          <End Role="CountryTbl" Type="Self.CountryTbl" Multiplicity="0..1" />
+          <End Role="StateTbl" Type="Self.StateTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryTbl">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="StateTbl">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__userPacka__pkgId__35BCFE0A">
+          <End Role="PackagesTbl" Type="Self.PackagesTbl" Multiplicity="0..1" />
+          <End Role="userPackages" Type="Self.userPackage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackagesTbl">
+              <PropertyRef Name="packageId" />
+            </Principal>
+            <Dependent Role="userPackages">
+              <PropertyRef Name="pkgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__userWatch__packa__25869641">
+          <End Role="PackagesTbl" Type="Self.PackagesTbl" Multiplicity="0..1" />
+          <End Role="userWatchList" Type="Self.userWatchList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackagesTbl">
+              <PropertyRef Name="packageId" />
+            </Principal>
+            <Dependent Role="userWatchList">
+              <PropertyRef Name="packageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__userPacka__userI__34C8D9D1">
+          <End Role="RegistrationTbl" Type="Self.RegistrationTbl" Multiplicity="0..1" />
+          <End Role="userPackages" Type="Self.userPackage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationTbl">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="userPackages">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__userWatch__userI__267ABA7A">
+          <End Role="RegistrationTbl" Type="Self.RegistrationTbl" Multiplicity="0..1" />
+          <End Role="userWatchList" Type="Self.userWatchList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationTbl">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="userWatchList">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WithdrawT__userI__286302EC">
+          <End Role="RegistrationTbl" Type="Self.RegistrationTbl" Multiplicity="0..1" />
+          <End Role="WithdrawTbl" Type="Self.WithdrawTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationTbl">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="WithdrawTbl">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="makemoneyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdvertiseTbls" EntityType="Self.AdvertiseTbl" />
+          <EntitySet Name="CityTbls" EntityType="Self.CityTbl" />
+          <EntitySet Name="CountryTbls" EntityType="Self.CountryTbl" />
+          <EntitySet Name="MessageTbls" EntityType="Self.MessageTbl" />
+          <EntitySet Name="PackagesTbls" EntityType="Self.PackagesTbl" />
+          <EntitySet Name="PkgPaymentDetailsTbls" EntityType="Self.PkgPaymentDetailsTbl" />
+          <EntitySet Name="RegistrationTbls" EntityType="Self.RegistrationTbl" />
+          <EntitySet Name="StateTbls" EntityType="Self.StateTbl" />
+          <EntitySet Name="userPackages" EntityType="Self.userPackage" />
+          <EntitySet Name="userWatchLists" EntityType="Self.userWatchList" />
+          <EntitySet Name="WithdrawTbls" EntityType="Self.WithdrawTbl" />
+          <AssociationSet Name="FK__userWatchL__adId__276EDEB3" Association="Self.FK__userWatchL__adId__276EDEB3">
+            <End Role="AdvertiseTbl" EntitySet="AdvertiseTbls" />
+            <End Role="userWatchList" EntitySet="userWatchLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CityTbl_StateTbl" Association="Self.FK_CityTbl_StateTbl">
+            <End Role="StateTbl" EntitySet="StateTbls" />
+            <End Role="CityTbl" EntitySet="CityTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateTbl_CountryTbl" Association="Self.FK_StateTbl_CountryTbl">
+            <End Role="CountryTbl" EntitySet="CountryTbls" />
+            <End Role="StateTbl" EntitySet="StateTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userPacka__pkgId__35BCFE0A" Association="Self.FK__userPacka__pkgId__35BCFE0A">
+            <End Role="PackagesTbl" EntitySet="PackagesTbls" />
+            <End Role="userPackages" EntitySet="userPackages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userWatch__packa__25869641" Association="Self.FK__userWatch__packa__25869641">
+            <End Role="PackagesTbl" EntitySet="PackagesTbls" />
+            <End Role="userWatchList" EntitySet="userWatchLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userPacka__userI__34C8D9D1" Association="Self.FK__userPacka__userI__34C8D9D1">
+            <End Role="RegistrationTbl" EntitySet="RegistrationTbls" />
+            <End Role="userPackages" EntitySet="userPackages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__userWatch__userI__267ABA7A" Association="Self.FK__userWatch__userI__267ABA7A">
+            <End Role="RegistrationTbl" EntitySet="RegistrationTbls" />
+            <End Role="userWatchList" EntitySet="userWatchLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WithdrawT__userI__286302EC" Association="Self.FK__WithdrawT__userI__286302EC">
+            <End Role="RegistrationTbl" EntitySet="RegistrationTbls" />
+            <End Role="WithdrawTbl" EntitySet="WithdrawTbls" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="makemoneyModelStoreContainer" CdmEntityContainer="makemoneyEntities">
+          <EntitySetMapping Name="AdvertiseTbls">
+            <EntityTypeMapping TypeName="makemoneyModel.AdvertiseTbl">
+              <MappingFragment StoreEntitySet="AdvertiseTbl">
+                <ScalarProperty Name="AdvertiseId" ColumnName="AdvertiseId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AdsFilePath" ColumnName="AdsFilePath" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="delFlag" ColumnName="delFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CityTbls">
+            <EntityTypeMapping TypeName="makemoneyModel.CityTbl">
+              <MappingFragment StoreEntitySet="CityTbl">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CountryTbls">
+            <EntityTypeMapping TypeName="makemoneyModel.CountryTbl">
+              <MappingFragment StoreEntitySet="CountryTbl">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageTbls">
+            <EntityTypeMapping TypeName="makemoneyModel.MessageTbl">
+              <MappingFragment StoreEntitySet="MessageTbl">
+                <ScalarProperty Name="MsgId" ColumnName="MsgId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PackagesTbls">
+            <EntityTypeMapping TypeName="makemoneyModel.PackagesTbl">
+              <MappingFragment StoreEntitySet="PackagesTbl">
+                <ScalarProperty Name="PkgImgPath" ColumnName="PkgImgPath" />
+                <ScalarProperty Name="packageId" ColumnName="packageId" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="validity" ColumnName="validity" />
+                <ScalarProperty Name="peradClick" ColumnName="peradClick" />
+                <ScalarProperty Name="perdayEarning" ColumnName="perdayEarning" />
+                <ScalarProperty Name="referalBonus" ColumnName="referalBonus" />
+                <ScalarProperty Name="minWithdraw" ColumnName="minWithdraw" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="dailyAds" ColumnName="dailyAds" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PkgPaymentDetailsTbls">
+            <EntityTypeMapping TypeName="makemoneyModel.PkgPaymentDetailsTbl">
+              <MappingFragment StoreEntitySet="PkgPaymentDetailsTbl">
+                <ScalarProperty Name="PaymentDetailsId" ColumnName="PaymentDetailsId" />
+                <ScalarProperty Name="PkgName" ColumnName="PkgName" />
+                <ScalarProperty Name="ReferId" ColumnName="ReferId" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="MobileAcountNo" ColumnName="MobileAcountNo" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistrationTbls">
+            <EntityTypeMapping TypeName="makemoneyModel.RegistrationTbl">
+              <MappingFragment StoreEntitySet="RegistrationTbl">
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ProfileImgPath" ColumnName="ProfileImgPath" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Perspective" ColumnName="Perspective" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+                <ScalarProperty Name="IsAgreeTerms" ColumnName="IsAgreeTerms" />
+                <ScalarProperty Name="balance" ColumnName="balance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateTbls">
+            <EntityTypeMapping TypeName="makemoneyModel.StateTbl">
+              <MappingFragment StoreEntitySet="StateTbl">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userPackages">
+            <EntityTypeMapping TypeName="makemoneyModel.userPackage">
+              <MappingFragment StoreEntitySet="userPackages">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="pkgId" ColumnName="pkgId" />
+                <ScalarProperty Name="phoneNo" ColumnName="phoneNo" />
+                <ScalarProperty Name="isPaid" ColumnName="isPaid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userWatchLists">
+            <EntityTypeMapping TypeName="makemoneyModel.userWatchList">
+              <MappingFragment StoreEntitySet="userWatchList">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="adId" ColumnName="adId" />
+                <ScalarProperty Name="showDate" ColumnName="showDate" />
+                <ScalarProperty Name="isWatch" ColumnName="isWatch" />
+                <ScalarProperty Name="packageId" ColumnName="packageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WithdrawTbls">
+            <EntityTypeMapping TypeName="makemoneyModel.WithdrawTbl">
+              <MappingFragment StoreEntitySet="WithdrawTbl">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="phoneNo" ColumnName="phoneNo" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="isPaid" ColumnName="isPaid" />
+                <ScalarProperty Name="reqDate" ColumnName="reqDate" />
+                <ScalarProperty Name="payDate" ColumnName="payDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,167 @@
+﻿@model IEnumerable<GTM.Models.AdvertiseTbl>
+
+@{
+    ViewBag.Title = "GetAdsList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<style>
+
+
+    .toolbar {
+        float: left;
+    }
+</style>
+
+<head>
+
+    @*<link rel="stylesheet" type="text/css" href="datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css" href="datatables/Buttons-1.4.2/css/buttons.bootstrap4.min.css" />*@
+    <link href="~/Custom/admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link href="~/Custom/admin/assets/libs/datatables.net-bs4/css/responsive.dataTables.min.css" rel="stylesheet" />
+</head>
+
+<div class="wrapper">
+
+    <div class="content-wrapper">
+
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Advertisement</a></li>
+                            <li class="breadcrumb-item active"> List</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+
+        <section class="content">
+            <div class="container-fluid">
+                <!-- COLOR PALETTE -->
+                <div class="card card-default color-palette-box">
+                    @*<div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-tag"></i>
+                                Color Palette
+                            </h3>
+                        </div>*@
+                    <div class="card-body">
+
+                        @*<input type="hidden" name="AdvertiseId" />
+                            <input type="hidden" name="AdsFilePath" />*@
+
+                        <table class="table table-striped table-bordered  table-hover " style=" margin-top:0px">
+                            <thead>
+                                <tr>
+
+                                    <th>#Sr. No</th>
+                                    <th>
+                                        Title
+                                    </th>
+
+                                    <th>
+                                        Description
+
+                                    </th>
+
+                                    <th>
+                                        Price
+
+                                    </th>
+
+                                    @*<th>Action</th>*@
+                                </tr>
+                            </thead>
+                            @{
+                                int i = 1;
+                            }
+
+                            <tbody>
+                                @foreach (var item in Model)
+{
+    <tr style="text-transform: uppercase" onclick="getAdsId('@item.AdvertiseId')">
+
+        <td>
+
+            @Html.Raw(i++)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+
+        <td style="width:360px">
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitPrice)
+        </td>
+
+    </tr>
+}
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+
+
+            <!-- START ALERTS AND CALLOUTS -->
+            <h5 class="mt-4 mb-2">
+                <a href="#">Back to list</a>
+            </h5>
+            <br />
+        </section>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="~/Custom/admin/js/jquery.min.js"></script>
+   
+    <script src="~/Custom/admin/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+    
+    <script src="~/Custom/admin/assets/libs/datatables.net-bs4/js/dataTables.responsive.min.js"></script>
+<script>
+
+
+    $(document).ready(function () {
+
+        //$(document).on("click", "#myTable tbody tr", function () {
+        //    var getRowId = $(this).closest('tr').attr("EmpCode");
+        //    alert("I am a " + getRowId);
+        //});
+
+        $('.table').DataTable({
+            dom: '<"toolbar">Bfrtip',
+            "searching": true,
+            "pageLength": 50,
+            "lengthChange": false,
+            "scrollCollapse": true,
+
+        });
+
+        //dataTable not working yet
+        $("div.toolbar").html('<button class="btn btn-info" id="add-new-btn-id">Add New</button>');
+        $('#add-new-btn-id').on('click', function () {
+
+            location.href = '@Url.Action("CreateAds", "Admin")';
+        })
+
+    })
+
+    function getAdsId(adsId) {
+
+        window.location = '@Url.Action("GetAdsDetails", "Admin")/' + adsId;
+    }
+</script>
+@*}*@

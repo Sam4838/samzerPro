@@ -1,0 +1,516 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 4 admin, bootstrap 4, css3 dashboard, bootstrap 4 dashboard, material admin bootstrap 4 dashboard, frontend, responsive bootstrap 4 admin template, material design, material dashboard bootstrap 4 dashboard template">
+    <meta name="description" content="MaterialPro is powerful and clean admin dashboard template, inpired from Google's Material Design">
+    <meta name="robots" content="noindex,nofollow">
+    <title>MaterialPro Admin Template by WrapPixel</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro/" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Custom/admin/assets/images/favicon.png">
+    <link href="~/Custom/admin/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="~/Custom/admin/dist/js/pages/chartist/chartist-init.css" rel="stylesheet">
+    <link href="~/Custom/admin/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <link href="~/Custom/admin/assets/libs/c3/c3.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/Custom/admin/dist/css/style.min.css" rel="stylesheet">
+    <link href="~/Custom/admin/assets/libs/datetime-picker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+    <link href="~/Custom/admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link href="~/Custom/admin/assets/libs/datatables.net-bs4/css/responsive.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Custom/admin/assets/libs/toastr/toastr.min.css" rel="stylesheet" />
+    <link href="~/Custom/admin/assets/libs/toastr/toastr.css" rel="stylesheet" />
+    <link href="~/Custom/admin/assets/libs/dropify/dropify.min.css" rel="stylesheet" />
+    <link href="~/Custom/admin/assets/libs/sweet-alert/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Custom/admin/assets/libs/morrisjs/morris.css" rel="stylesheet" />
+    @RenderSection("Styles", required: false)
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header">
+                    <!-- This is for the sidebar toggle which is visible on mobile only -->
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+                        <i class="ti-menu ti-close"></i>
+                    </a>
+                    <!-- ============================================================== -->
+                    <!-- Logo -->
+                    <!-- ============================================================== -->
+                    <a class="navbar-brand" href="index.html">
+                        <!-- Logo icon -->
+                        <b class="logo-icon">
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="~/Custom/admin/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="~/Custom/admin/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text -->
+                        <span class="logo-text">
+                            <!-- dark Logo text -->
+                            <img src="~/Custom/admin/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo text -->
+                            <img src="~/Custom/admin/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                        </span>
+                    </a>
+                    <!-- ============================================================== -->
+                    <!-- End Logo -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Toggle which is visible on mobile only -->
+                    <!-- ============================================================== -->
+                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
+                       data-toggle="collapse" data-target="#navbarSupportedContent"
+                       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="ti-more"></i>
+                    </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+                        <!-- This is  -->
+                        <li class="nav-item">
+                            <a class="nav-link sidebartoggler d-none d-md-block waves-effect waves-dark"
+                               href="javascript:void(0)"><i class="ti-menu"></i></a>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item d-none d-md-block search-box">
+                            <a class="nav-link d-none d-md-block waves-effect waves-dark" href="/Admin/Index">
+                                <i class="fa fa-home"></i>
+                            </a>
+                            @*<form class="app-search">
+                                    <input type="text" class="form-control" placeholder="Search & enter">
+                                    <a class="srh-btn"><i class="ti-close"></i></a>
+                                </form>*@
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- Mega Menu -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- End Mega Menu -->
+                        <!-- ============================================================== -->
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- Right side toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav">
+                        <!-- ============================================================== -->
+                        <!-- Comment -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class=" fa fa-bell"></i>
+                                <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right mailbox scale-up">
+                                <ul class="list-style-none">
+                                    <li>
+                                        <div class="border-bottom rounded-top py-3 px-4">
+                                            <h5 class="mb-0 font-weight-medium">Notifications</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="message-center notifications position-relative" style="height:250px;">
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="btn btn-danger rounded-circle btn-circle"><i class="fa fa-link"></i></span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h5 class="message-title mb-0 mt-1">Luanch Admin</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">Just see the my new admin!</span> <span class="font-12 text-nowrap d-block text-muted">9:30 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="btn btn-success rounded-circle btn-circle"><i class="ti-calendar"></i></span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h5 class="message-title mb-0 mt-1">Event today</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">Just a reminder that you have event</span> <span class="font-12 text-nowrap d-block text-muted">9:10 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="btn btn-info rounded-circle btn-circle"><i class="ti-settings"></i></span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h5 class="message-title mb-0 mt-1">Settings</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">You can customize this template as you want</span> <span class="font-12 text-nowrap d-block text-muted">9:08 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="btn btn-primary rounded-circle btn-circle"><i class="ti-user"></i></span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h5 class="message-title mb-0 mt-1">Pavan kumar</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">Just see the my admin!</span> <span class="font-12 text-nowrap d-block text-muted">9:02 AM</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link border-top text-center text-dark pt-3" href="javascript:void(0);"> <strong>Check all notifications</strong> <i class="fa fa-angle-right"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- End Comment -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- Messages -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class=" fa fa-envelope"></i>
+                                <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                            </a>
+                            <div class="dropdown-menu mailbox dropdown-menu-right scale-up" aria-labelledby="2">
+                                <ul class="list-style-none">
+                                    <li>
+                                        <div class="border-bottom rounded-top py-3 px-4">
+                                            <h5 class="font-weight-medium mb-0">You have 4 new messages</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="message-center message-body position-relative" style="height:250px;">
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="user-img position-relative d-inline-block"> <img src="~/Custom/admin/assets/images/users/1.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle online"></span> </span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h5 class="message-title mb-0 mt-1">Pavan kumar</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">Just see the my admin!</span> <span class="font-12 text-nowrap d-block text-muted">9:30 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="user-img position-relative d-inline-block"> <img src="~/Custom/admin/assets/images/users/2.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle busy"></span> </span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h5 class="message-title mb-0 mt-1">Sonu Nigam</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">I've sung a song! See you at</span> <span class="font-12 text-nowrap d-block text-muted">9:10 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="user-img position-relative d-inline-block"> <img src="~/Custom/admin/assets/images/users/3.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle away"></span> </span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h5 class="message-title mb-0 mt-1">Arijit Sinh</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">I am a singer!</span> <span class="font-12 text-nowrap d-block text-muted">9:08 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="user-img position-relative d-inline-block"> <img src="~/Custom/admin/assets/images/users/4.jpg" alt="user" class="rounded-circle w-100"> <span class="profile-status rounded-circle offline"></span> </span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h5 class="message-title mb-0 mt-1">Pavan kumar</h5> <span class="font-12 text-nowrap d-block text-muted text-truncate">Just see the my admin!</span> <span class="font-12 text-nowrap d-block text-muted">9:02 AM</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link border-top text-center text-dark pt-3" href="javascript:void(0);"> <b>See all e-Mails</b> <i class="fa fa-angle-right"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- End Messages -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- Profile -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                <img src="~/Custom/admin/assets/images/users/1.jpg" alt="user" width="30" class="profile-pic rounded-circle" />
+                            </a>
+                            <div class="dropdown-menu mailbox dropdown-menu-right scale-up">
+                                <ul class="dropdown-user list-style-none">
+                                    <li>
+                                        <div class="dw-user-box p-3 d-flex">
+                                            <div class="u-img"><img src="~/Custom/admin/assets/images/users/1.jpg" alt="user" class="rounded" width="80"></div>
+                                            <div class="u-text ml-2">
+                                                <h4 class="mb-0">Steave Jobs</h4>
+                                                <p class="text-muted mb-1 font-14"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="47312635322907202a262e2b6924282a">[email&#160;protected]</a></p>
+                                                <a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm text-white d-inline-block">
+                                                    View
+                                                    Profile
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li role="separator" class="dropdown-divider"></li>
+                                    <li class="user-list"><a class="px-3 py-2" href="#"><i class="ti-user"></i> My Profile</a></li>
+                                    <li class="user-list"><a class="px-3 py-2" href="#"><i class="ti-wallet"></i> My Balance</a></li>
+                                    <li class="user-list"><a class="px-3 py-2" href="#"><i class="ti-email"></i> Inbox</a></li>
+                                    <li role="separator" class="dropdown-divider"></li>
+                                    <li class="user-list"><a class="px-3 py-2" href="#"><i class="ti-settings"></i> Account Setting</a></li>
+                                    <li role="separator" class="dropdown-divider"></li>
+                                    <li class="user-list"><a class="px-3 py-2" href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- Language -->
+                        <!-- ============================================================== -->
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- User profile -->
+                <div class="user-profile position-relative" style="background: url(/Custom/admin/assets/images/background/user-info.jpg) no-repeat;">
+                    <!-- User profile image -->
+                    <div class="profile-img"> <img src="~/Custom/admin/assets/images/users/profile.png" alt="user" class="w-100" /> </div>
+                    <!-- User profile text-->
+                    <div class="profile-text pt-1">
+                        <a href="#" class="dropdown-toggle u-dropdown w-100 text-white d-block position-relative" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Markarn Doe</a>
+                        <div class="dropdown-menu animated flipInY">
+                            <a href="#" class="dropdown-item">
+                                <i class="ti-user"></i>
+                                My Profile
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="ti-wallet"></i> My
+                                Balance
+                            </a>
+                            <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="authentication-login1.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End User profile text-->
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">
+                            <i class=" fa fa-dots-horizontal"></i>
+                            <span class="hide-menu">Personal</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                               aria-expanded="false">
+                                <i class=" fa fa-switch"></i>
+                                <span class="hide-menu">Dashboard </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item">
+                                    <a href="index.html" class="sidebar-link">
+                                        <i class=" fa fa-adjust"></i>
+                                        <span class="hide-menu"> Dashboard 1 </span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="index2.html" class="sidebar-link">
+                                        <i class=" fa fa-adjust"></i>
+                                        <span class="hide-menu"> Dashboard 2 </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class=" fa fa-dots-horizontal"></i>
+                            <span class="hide-menu">Setup</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                               aria-expanded="false">
+                                <i class=" fa fa-switch"></i>
+                                <span class="hide-menu">Dashboard </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item">
+                                    <a href="index.html" class="sidebar-link">
+                                        <i class=" fa fa-adjust"></i>
+                                        <span class="hide-menu"> Dashboard 1 </span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="index2.html" class="sidebar-link">
+                                        <i class=" fa fa-adjust"></i>
+                                        <span class="hide-menu"> Dashboard 2 </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class=" fa fa-dots-horizontal"></i>
+                            <span class="hide-menu">User</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                               aria-expanded="false">
+                                <i class=" fa fa-switch"></i>
+                                <span class="hide-menu">Dashboard </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item">
+                                    <a href="index.html" class="sidebar-link">
+                                        <i class=" fa fa-adjust"></i>
+                                        <span class="hide-menu"> Dashboard 1 </span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="index2.html" class="sidebar-link">
+                                        <i class=" fa fa-adjust"></i>
+                                        <span class="hide-menu"> Dashboard 2 </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+            <!-- Bottom points-->
+            <div class="sidebar-footer">
+                <!-- item-->
+                <a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
+                <!-- item-->
+                <a href="/Home/Index" class="link" data-toggle="tooltip" title="Web"><i class=" fa fa-globe"></i></a>
+                <!-- item-->
+                <a href="" class="link" data-toggle="tooltip" title="Logout"><i class=" fa fa-power-off"></i></a>
+            </div>
+            <!-- End Bottom points-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+
+            @RenderBody()
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer">
+                © 2020 Material Pro Admin by wrappixel.com
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- customizer Panel -->
+    <!-- ============================================================== -->
+
+    <div class="chat-windows"></div>
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script data-cfasync="false" src="~/Custom/admin/assets/libs/cdn-cgi/email-decode.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="~/Custom/admin/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- apps -->
+    <script src="~/Custom/admin/dist/js/pages/app.min.js"></script>
+    <script src="~/Custom/admin/dist/js/pages/app.init.js"></script>
+    <script src="~/Custom/admin/dist/js/pages/app-style-switcher.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="~/Custom/admin/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="~/Custom/admin/assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="~/Custom/admin/dist/js/pages/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="~/Custom/admin/dist/js/pages/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="~/Custom/admin/dist/js/pages/custom.min.js"></script>
+    <!--This page JavaScript -->
+    <!-- chartist chart -->
+    <script src="~/Custom/admin/assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <!--c3 JavaScript -->
+    <script src="~/Custom/admin/assets/libs/d3/dist/d3.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/c3/c3.min.js"></script>
+    <!-- Chart JS -->
+    <script src="~/Custom/admin/dist/js/pages/dashboards/dashboard1.js"></script>
+    <script src="~/Custom/admin/assets/libs/cdn-cgi/email-decode.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/chartist/dist/chartist.js"></script>
+    <script src="~/Custom/admin/assets/libs/cloudflare-static/email-decode.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.js"></script>
+    <script src="~/Custom/admin/assets/libs/d3/dist/d3.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/datatables.net-bs4/js/dataTables.responsive.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/datetime-picker/js/bootstrap-material-datetimepicker-custom.js"></script>
+    <script src="~/Custom/admin/assets/libs/datetime-picker/js/moment.js"></script>
+    <script src="~/Custom/admin/assets/libs/datetime-picker/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/dropify/sticky-kit.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/dropify/dropify.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/inputMask/inputmask.date.extensions.js"></script>
+    <script src="~/Custom/admin/assets/libs/inputMask/inputmask.extensions.js"></script>
+    <script src="~/Custom/admin/assets/libs/inputMask/inputmask.numeric.extensions.js"></script>
+    <script src="~/Custom/admin/assets/libs/inputMask/jquery.inputmask.bundle.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/inputMask/mask.init.js"></script>
+    <script src="~/Custom/admin/assets/libs/sweet-alert/sweet-alert.init.js"></script>
+    <script src="~/Custom/admin/assets/libs/sweet-alert/sweetalert2.all.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/toastr/toastr.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,127 @@
+﻿@model GTM.Models.AdvertiseTbl
+
+@{
+    //ViewBag.Title = "GetAdsDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="wrapper">
+
+    <div class="content-wrapper">
+
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">User's</a></li>
+                            <li class="breadcrumb-item active"> List</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+
+        <section class="content">
+            <div class="container-fluid">
+                <!-- COLOR PALETTE -->
+                <div class="card card-default color-palette-box">
+                    @*<div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-tag"></i>
+                                Color Palette
+                            </h3>
+                        </div>*@
+                    @*<form action="DeleteUser" method="post">*@
+
+                    <div class="card-body">
+   @using (Html.BeginForm("DeleteAds", "Admin", new { id=Model.AdvertiseId}))
+    {
+                        <div class="row">
+                           
+                                   <div class="col-md-4 center-block text-center">
+                                <img src="@Url.Content(Model.AdsFilePath)" style="height:200px; width:250px" />
+                                <br />
+                                @*<br />*@
+                                @*<button class="btn btn-danger" >
+                                    @Html.ActionLink("Remove", "DeleteAds", "Admin", new { id=Model.AdvertiseId })
+                                </button>*@
+                                       @*<input type="submit" class="btn btn-danger" style="width: 150px;" value="Remove" onclick="return confirm('Are you sure to delete @Model.Title')">*@
+                                   
+
+
+                            </div>
+                            <div class="col-md-4">
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Title)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Title)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Description)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Description)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.UnitPrice)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.UnitPrice)
+                                    </dd>
+
+
+                                </dl>
+
+                            </div>
+
+                        </div>
+}
+<br />
+<div class="row">
+    <div class="col-md-4 text-center">
+        <button class="btn btn-primary" style="width: 250px;" onclick="updateAdsId(@Model.AdvertiseId);">Update</button>
+
+
+    </div>
+</div>                  
+
+                    </div>
+                    <!-- /.card-body -->
+                    @*</form>*@
+                </div>
+            </div>
+
+
+            <!-- START ALERTS AND CALLOUTS -->
+            <h5 class="mt-4 mb-2">
+                <a href="/Admin/GetAdsList">Back to list</a>
+            </h5>
+            <br />
+        </section>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="~/Custom/admin/js/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="~/Custom/admin/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="~/Custom/admin/js/adminlte.min.js"></script>
+
+<script type="text/javascript">
+
+    function updateAdsId(adsId) {
+
+        window.location = '@Url.Action("EditAds", "Admin")/' + adsId;
+    }
+</script>

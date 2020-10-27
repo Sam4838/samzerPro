@@ -1,0 +1,153 @@
+﻿@model GTM.Models.AdvertiseTbl
+
+@{
+    Layout = null;
+}
+@*<style>
+    #ads-content {
+        left: 36%;
+        color: dodgerblue;
+        font-family: cursive;
+        text-align: justify;
+    }
+
+    #ads-img {
+        height: 250px;
+        width: 500px;
+    }
+
+    #ads-price {
+        color: darkgrey;
+    }
+
+    #display-timer {
+        color: lightskyblue;
+    }
+
+    .container {
+        font-family: cursive;
+    }
+</style>*@
+<style>
+    #ads-content {
+        left: 36%;
+        color: dodgerblue;
+        font-family: cursive;
+        text-align: justify;
+    }
+
+    #ads-img {
+        height: 250px;
+        width: 500px;
+    }
+
+    #ads-price {
+        color: black;
+        opacity: 70%;
+    }
+
+    #display-timer {
+        color: black;
+        opacity: 70%;
+    }
+
+    .container {
+        font-family: cursive;
+    }
+</style>
+<head>
+    <link href="~/Custom/admin/css/adminlte.min.css" rel="stylesheet" />
+    <link href="~/Custom/admin/css/all.min.css" rel="stylesheet" />
+    <script src="~/Custom/admin/js/jquery.min.js"></script>
+    <script src="~/Custom/admin/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Custom/admin/js/adminlte.min.js"></script>
+</head>
+<br />
+<br />
+
+<div class="container">
+    <h4 class="text-center" id="display-timer"></h4>
+    <hr />
+
+    <div class="row" style="background-color: #fff">
+
+        <div class="col-md-2">
+
+            <img src="@Url.Content(Model.AdsFilePath)" id="ads-img" />
+
+        </div>
+        <div class="col-md-6" id="ads-content">
+            <h3 class="text-center">@Model.Title!</h3>
+
+
+            <p style="color: darkgrey;">@Model.Description</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <strong style="color: dodgerblue">Price:</strong>&nbsp;
+            <b id="ads-price">@Model.UnitPrice</b>
+        </div>
+    </div>
+
+    <hr />
+    @*<p>
+            @Html.ActionLink("Back to List", "ViewAds","Home")
+        </p>*@
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var seconds = 0;
+        function displaySeconds() {
+            seconds += 1;
+            document.getElementById('display-timer').innerText = "Please watch till end. after this ad 'll disappear automatically: " + seconds;
+        }
+
+        setInterval(displaySeconds, 1000);
+
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                }
+            }
+        };
+
+        var adsId = getUrlParameter('id');
+        var incr = getUrlParameter('inc');
+        var userId = getUrlParameter('uid');
+
+        function redirectPage() {
+            window.location = '@Url.Action("ViewAds", "Home")';
+
+        }
+
+        function adRes() {
+            $.ajax({
+                type: "POST",
+                url: "/Home/adResult",
+                data: { adId: adsId, increment: incr, uId: userId },
+                success: function (data) {
+                    redirectPage();
+                },
+                error: function () {
+                    redirectPage();
+                }
+            });
+        }
+
+        setTimeout(adRes, 20000);
+
+    });
+
+</script>

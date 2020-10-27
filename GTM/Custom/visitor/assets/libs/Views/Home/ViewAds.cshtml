@@ -1,0 +1,101 @@
+﻿@model IEnumerable<GTM.Models.AdvertiseTbl>
+
+@{
+    ViewBag.Title = "ViewAds";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+@{
+    int i = 1;
+}
+<div class="container">
+    <div class="content">
+
+    </div>
+    <div class="row">
+
+        <div class="col-md-4">
+            @if (ViewBag.hasAds == "Y")
+            {
+                <h2>ViewAds</h2>
+                <hr />
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            Sr. No#
+                        </th>
+                        <th>
+                            Title
+                        </th>
+
+                    </tr>
+                    @foreach (var item in ViewBag.adsList)
+                    {
+                        <tr>
+
+                            <td>
+                                @Html.Raw(i++)
+
+                            </td>
+                            <td style="color:blue; cursor:pointer" onclick="showAds(@item.AdvertiseTbl.AdvertiseId,@item.PackagesTbl.peradClick,@item.RegistrationTbl.UserId)">
+
+                                @item.AdvertiseTbl.Title
+
+                            </td>
+
+                        </tr>
+
+                    }
+
+
+                </table>
+            }
+            else
+            {
+                <p>@ViewBag.Error !&nbsp;<a href="/Home/Index">Buy Now</a></p>
+            }
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-6 text-right" style="text-align:center">
+            <h2>My Revenue</h2><hr />
+            <br />
+            @try
+            {
+                <h4><b>@ViewBag.balance.balance</b>_&nbsp;PKR</h4>
+            }
+            catch (Exception ex)
+            {
+                <h4><b>0</b>_&nbsp;PKR</h4>
+            }
+
+            <br />
+            <button class="btn btn-primary" onclick="location.href = '/Home/withdrawRec'">
+                Withdraw
+            </button>
+        </div>
+
+    </div>
+
+</div>
+<br />
+<br />
+
+@section Scripts {
+    <script type="text/javascript">
+        var count = (function () {
+            var counter = 0;
+            return function () { return counter += 1.5; }
+        })();
+        function displaycount() {
+            document.getElementById('revenue-id').innerHTML = count();
+
+        }
+
+
+        function showAds(adsId, adRate, uid, showDate) {
+            window.location = '@Url.Action("ShowAd", "Home")?id=' + adsId + '&inc=' + adRate + '&uid=' + uid;
+        }
+    </script>
+}

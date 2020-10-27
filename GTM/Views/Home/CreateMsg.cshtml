@@ -1,0 +1,173 @@
+﻿@model GTM.Models.MessageTbl
+
+@{
+    //ViewBag.Title = "CreateMsg";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<head>
+    <style>
+        body {
+            background-color: ghostwhite;
+        }
+     address {
+color:gray;
+        }
+        h2 {
+            color: black;
+            opacity:60%;
+            font-family: cursive;
+            font-size: xx-large;
+            font-weight: bolder;
+        }
+        #contactUS {
+            font-family: cursive;
+        }
+    </style>
+</head>
+
+<div class="row" id="contactUS">
+    @*<div class="col-md-1"></div>*@
+
+    <div class="col-md-3 center-block text-center">
+
+        <img src="~/Custom/admin/imges/super-admin.png" style="width:125px;height:130px;border-radius:50%" /><br />
+        <h4 class="text-primary">ADMIN</h4>
+   
+     </div>
+
+
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Contact Info:</h2>
+
+            </div>
+            <div class="col-md-7 text-right">
+                <h2>Send us a message:</h2>
+
+            </div>
+        </div>
+
+        <hr />
+        @*<img src="~/images/smiley_ball_keyboard_132925_300x168.jpg" style="height:300px ; width:400px" />*@
+        <div class="row">
+
+            <div class="col-md-6">
+
+                @*<h3>MEHRAN</h3>*@
+             
+
+
+                <address>
+                    <b>
+                        <i class="fas fa-home"></i>
+                        Bank:
+                    </b>
+                    Meezan Bank
+                    <br />
+                    <b>Acc Title:</b> Rahman Idrees
+                    <br />
+
+                    <b> Account# :</b> 02520103441999
+
+                </address>
+
+                <address>
+                    <b>
+                        <i class="fas fa-phone"></i>
+                        Whatsapp/JazzCash/EasyPaisa:
+                    </b><br />
+                    &emsp; (+92) 0304-1234448
+                </address>
+                <address>
+                    <b> <i class="fas fa-envelope"></i> Support:</b>&nbsp;<a href="mailto:moneymake.pk@gmail.com">moneymake.pk@gmail.com</a><br />
+                   @* <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>*@
+                </address>
+
+               
+            </div>
+
+            <div class="col-md-6">
+                @*<div class="card card-warning">*@
+                @*<div class="card-header">
+            <h3 class="card-title">SEND US A MESSAGE</h3>
+        </div>*@
+
+                @*<div class="card-body">*@
+
+                @using (Html.BeginForm("CreateMsg", "Home"))
+                {
+                    @Html.AntiForgeryToken()
+
+
+                    <input type="hidden" name="MsgId" />
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label style="color:black;opacity:70%">Name *</label>
+                                @*<input type="text" class="form-control" name="FullName" placeholder="Your Name" required>*@
+                                @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", id = "fname", placeholder = "Full Name", required = "required" } })
+                                @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+
+                            <div class="form-group">
+                                <label style="color:black;opacity:70%">Email *</label>
+                                @*<input type="email" class="form-control" name="Email" placeholder="abc@example.com" required>*@
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", id = "mail", placeholder = "Email", required = "required", type="email" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+
+    <label style="color:black;opacity:70%">Message *</label>
+
+                    <div class="form-group">
+                            <textarea class="form-control" rows="2" cols="8" id="msg-id" name="Message" placeholder="Your text here.." required></textarea>
+                       @* @Html.TextAreaFor(model => model.Message, new { htmlAttributes = new { @id="msg-textarea-id", @class = "form-control", @rows = "12", @cols="14"} })*@
+                        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+
+                    </div>
+                    <input type="submit" id="msg-btn" class="btn btn-primary" value="SEND" onclick="msgSuccess();"/>
+                }
+                <br />
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<br />
+<br />
+<br />
+
+    <!-- jQuery -->
+<script src="~/Custom/admin/js/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="~/Custom/admin/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="~/Custom/admin/js/adminlte.min.js"></script>
+
+<script type="text/javascript">
+    //$(document).ready(function () {
+        //function msgSuccess() {
+        //var name = $('#fname').val();
+        //var email = $('#fname').val();
+        //var txt = $('#msg-id').val();
+        //if (name==null && email==null && txt==null) {
+        //    alert('Please fill required fields.');
+        //    return false;
+        //}
+        //else {
+        //    return true;
+        //    alert('Message Sent!');
+        //}
+        //}
+
+    //});
+    </script>

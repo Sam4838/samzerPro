@@ -1,0 +1,122 @@
+﻿@model GTM.Models.userPackage
+
+@{
+    ViewBag.Title = "UserManualPkg";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="wrapper">
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+
+            </div><!-- /.container-fluid -->
+        </section>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="card card-default color-palette-box">
+                    <div class="card-body">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                <h4>Add Manual Packages</h4>
+                                <hr />
+                                @Html.ValidationSummary(true)
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            @*@Html.LabelFor(model => model.userId, new { @class = "control-label col-md-2" })*@
+                                            <label>User ID</label>
+                                           
+                                             <div class="col-md-10">
+                                                @Html.EditorFor(model => model.userId)
+                                                @Html.ValidationMessageFor(model => model.userId)
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @*@Html.LabelFor(model => model.pkgId, new { @class = "control-label col-md-2" })*@
+                                            <label>Package ID</label>
+                                            
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.pkgId)
+                                                @Html.ValidationMessageFor(model => model.pkgId)
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            @*@Html.LabelFor(model => model.phoneNo, new { @class = "control-label col-md-2" })*@
+                                            <label>Mobile#</label>
+
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.phoneNo)
+                                                @Html.ValidationMessageFor(model => model.phoneNo)
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @*@Html.LabelFor(model => model.isPaid, new { @class = "control-label col-md-2" })*@
+                                @*            <label>Is Paid</label>*@
+
+                                            <div class="col-md-10">
+                                                @*@Html.EditorFor(model => model.isPaid)
+
+                                                @Html.ValidationMessageFor(model => model.isPaid)*@
+                                                @*<div class="icheck-primary">
+
+                                                    @Html.CheckBox("isPaid",new { value="Y"})
+                                                 
+
+                                                </div>
+                                                <span style="color:red">@TempData["ispaidval"]</span>*@
+                                            </div>
+                                        </div>
+
+                                        @*<div class="form-group">
+            <label>End Date</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.endDate)
+                @Html.ValidationMessageFor(model => model.endDate)
+            </div>
+        </div>*@
+                                    </div>
+
+                                </div>
+
+
+
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Create" class="btn btn-primary" style="width:150px" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            </div>
+
+
+        </section>
+    
+    </div>
+</div>
+
+
+
+
+
+
+

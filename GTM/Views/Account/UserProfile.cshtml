@@ -1,0 +1,345 @@
+﻿@model GTM.Models.RegistrationTbl
+
+@{
+    //ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link href="~/Custom/admin/dist/css/ads.css" rel="stylesheet" />
+
+    <link href="~/Custom/admin/assets/libs/dropify/dropify.min.css" rel="stylesheet" />
+    <style>
+        #online-txt-id {
+            height: 22px;
+            border: 1px solid #1dbf73;
+            margin-top: 20px;
+            border-radius: 12px;
+            width: 70px;
+            color: #1dbf73;
+            position: absolute;
+            z-index: 1;
+            display: block;
+        }
+    </style>
+</head>
+<br />
+<br />
+<div class="row">
+    <!-- Column -->
+    <div class="col-lg-4 col-xlg-3 col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset">
+                        <div id="online-txt-id">
+                            <div class="user-online-indicator is-online " data-user-id="68544166">
+                                <i class="fa fa-circle"></i> Online
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <center class="mt-4">
+
+                    <img src="@Url.Content(Model.ProfileImgPath)" class="rounded-circle" width="150">
+                    <h4 class="card-title mt-2">  @Html.DisplayFor(model => model.FName)</h4>
+                    @*<h6 class="card-subtitle">Accoubts Manager Amix corp</h6>*@
+                    <div class="row text-center justify-content-md-center">
+                        <div class="col-4"><a href="javascript:void(0)" class="link"><i class="far fa-money-bill-alt"></i> <font class="font-medium">@Model.balance</font></a></div>
+                        <div class="col-4">
+                            <a href="javascript:void(0)" class="link">
+                                <i class="fas fa-eye"></i> <font class="font-medium">
+                                    @if (@Model.IsAgreeTerms == true)
+                                    {
+                                        <b>1</b>
+                                    }
+                                    else
+                                    {
+                                        <b>0</b>
+
+                                    }
+                                </font>
+                            </a>
+                        </div>
+                    </div>
+                </center>
+            </div>
+            <div>
+                <hr>
+            </div>
+            <div class="card-body">
+                <small class="text-muted">Email </small>
+                <h6> @Html.DisplayFor(model => model.UserName)</h6>
+                <small class="text-muted pt-4 db">Perspective</small>
+                <h6>@Html.DisplayFor(model => model.Perspective)</h6> @*<small class="text-muted pt-4 db">Address</small>
+                    <h6>71 Pilgrim Avenue Chevy Chase, MD 20815</h6>
+                    <div class="map-box">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470029.1604841957!2d72.29955005258641!3d23.019996818380896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C+Gujarat!5e0!3m2!1sen!2sin!4v1493204785508" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                    </div> <small class="text-muted pt-4 db">Social Profile</small>
+                    <br>
+                    <button class="btn btn-circle btn-secondary"><i class="fab fa-facebook-f"></i></button>
+                    <button class="btn btn-circle btn-secondary"><i class="fab fa-twitter"></i></button>
+                    <button class="btn btn-circle btn-secondary"><i class="fab fa-youtube"></i></button>*@
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+    <!-- Column -->
+    <div class="col-lg-8 col-xlg-9 col-md-7">
+        <div class="card">
+            <!-- Tabs -->
+            <ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="pills-timeline-tab" data-toggle="pill" href="#current-month" role="tab" aria-controls="pills-timeline" aria-selected="true">Timeline</a>
+                </li>
+                @*<li class="nav-item">
+                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#last-month" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+                    </li>*@
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-setting-tab" data-toggle="pill" href="#previous-month" role="tab" aria-controls="pills-setting" aria-selected="false">Setting</a>
+                </li>
+            </ul>
+            <!-- Tabs -->
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="current-month" role="tabpanel" aria-labelledby="pills-timeline-tab">
+                    <div class="card-body">
+                        <h3>Current Package</h3>
+
+                        <hr />
+                        @if (ViewBag.CurrentPkg == "N")
+                        {
+                            <p>You are currently not subscribed to any package! &nbsp;<a href="/Home/Index">Buy Now</a></p>
+                        }
+                        else
+                        {
+                            <h2 style="font-size:xx-large;text-decoration-line:underline; font-family:sans-serif; color:dodgerblue; ">@ViewBag.CurrentPkg</h2>
+
+                        }
+
+
+                    </div>
+                </div>
+                @*<div class="tab-pane fade" id="last-month" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <div class="card-body">
+
+                        </div>
+                    </div>*@
+
+                <div class="tab-pane fade" id="previous-month" role="tabpanel" aria-labelledby="pills-setting-tab">
+
+                    <div class="card-body">
+                        <form class="form-horizontal form-material" method="post" action="UpdateProfile" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @Html.HiddenFor(model => model.UserId)
+                                    @Html.HiddenFor(model => model.ProfileImgPath)
+                                    @Html.HiddenFor(model => model.balance)
+                                    @Html.HiddenFor(model => model.IsAgreeTerms)
+                                    @Html.HiddenFor(model => model.Perspective)
+                                    @Html.HiddenFor(model => model.UserName)
+                                    <div class="form-group">
+                                        <label>Gender:</label>&ensp;
+
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Gender, "Male", new { @name = "gender" })
+                                            Male
+
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(model => model.Gender, "Female", new { @name = "gender" })
+                                            Female
+
+                                        </label>
+
+                                    </div>
+
+                                    <br />
+                                    <div class="form-group">
+
+                                        <label class="col-md-6">Full Name</label>
+                                        @Html.TextBoxFor(model => model.FName, new { @class = "form-control form-control-line" })
+                                        @*<input type="text" placeholder="" name="FName" class="form-control form-control-line">*@
+
+
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label class="col-md-6">Password</label>
+
+                                        @Html.TextBoxFor(model => model.Password, new {id= "myPswd", type = "password", @class = "form-control form-control-line" })<br />
+                                        <input type="checkbox" onclick="myFunction()"> Show Password
+                                    </div>
+
+                                    @*<div class="form-group">
+
+                                        <label class="col-md-6">Confirm Password</label>
+
+                                        @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control form-control-line" })
+                                    </div>*@
+
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="file" class="hidden" id="browse-img" accept="image/*" name="UserImageFile" />
+
+                                        <div class="ads-display-image text-center">
+                                            <img class="ads-default-img img-fluid img-responsive"
+                                                 id="uploaded-img"
+                                                 @*src="~/Custom/Visitor/imges/notAvlImage.jpg"*@
+                                                 src="@Url.Content(Model.ProfileImgPath)"
+                                                 alt="User profile picture">
+
+                                            <div class="upload-photo">
+                                                <img src="~/Custom/Visitor/assets/images/chooseImgIcon.png" />
+                                            </div>
+
+
+                                            @*<p class="image-desc text-center">Allowed image size: 723 X 768</p>*@
+                                        </div>
+
+                                        <div class="remove-photo">
+                                            <b>X</b>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-success">Update Profile</button>
+
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+        <!-- Column -->
+    </div>
+    <!-- jQuery -->
+    @*<script src="~/Custom/admin/js/jquery.min.js"></script>*@
+    <script src="~/Custom/visitor/assets/libs/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap 4 -->
+    <script src="~/Custom/admin/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Custom/admin/js/adminlte.min.js"></script>
+
+    <script type="text/javascript">
+        $(".upload-photo").click(function () {
+            //alert('working');
+            $('#browse-img').trigger('click');
+
+        })
+
+        $('#browse-img').change(function () {
+
+            if (this.files && this.files[0]) {
+                var fileReader = new FileReader();
+                fileReader.readAsDataURL(this.files[0]);
+                fileReader.onload = function (x) {
+                    $('#uploaded-img').attr('src', x.target.result)
+                }
+
+            }
+        })
+
+        $('.remove-photo').click(function () {
+            $('#uploaded-img').attr('src', "/uploads/notAvlImage.jpg");
+            $('#AdsFilePath').val("/uploads/notAvlImage.jpg");
+
+
+            //alert('working..');
+        })
+        function myFunction() {
+            var x = document.getElementById("myPswd");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+
+    </script>
+
+
+
+
+
+
+    @*<div>
+            <h4>RegistrationTbl</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UserName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProfileImgPath)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProfileImgPath)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Gender)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Perspective)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Perspective)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Password)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Password)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ConfirmPassword)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ConfirmPassword)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsAgreeTerms)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IsAgreeTerms)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>*@
