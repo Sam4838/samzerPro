@@ -2,6 +2,17 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<style>
+
+    .toolbar {
+        float: left;
+    }
+</style>
+<head>
+    <link href="~/Custom/admin/css/ads.css" rel="stylesheet" />
+    <link href="~/Custom/admin/assets/libs/dropify/dropify.min.css" rel="stylesheet" />
+</head>
+
 <div class="wrapper">
     <div class="content-wrapper">
         <section class="content-header">
@@ -47,13 +58,13 @@
                                             <a href="@Url.Action("allowUserPac", "Admin", new { uid = item.userId, id = item.id})">Allow</a> |
                                             <a href="@Url.Action("disUserPac", "Admin", new { uid = item.userId, id = item.id })">Disallow</a> |
                                             <a href="@Url.Action("delUserPac", "Admin", new { uid = item.userId, id = item.id })">Delete</a>
-                                            </td>
+                                        </td>
 
                                         @*<td>
-                                            <a href="@Url.Action("allowUserPac", "Admin", new { uid = item.userId})">Allow</a> |
-                                            <a href="@Url.Action("disUserPac", "Admin", new { uid = item.userId})">Disallow</a> |
-                                            <a href="@Url.Action("delUserPac", "Admin", new { uid = item.userId})">Delete</a>
-                                        </td>*@
+                                                <a href="@Url.Action("allowUserPac", "Admin", new { uid = item.userId})">Allow</a> |
+                                                <a href="@Url.Action("disUserPac", "Admin", new { uid = item.userId})">Disallow</a> |
+                                                <a href="@Url.Action("delUserPac", "Admin", new { uid = item.userId})">Delete</a>
+                                            </td>*@
                                     </tr>
                                 }
                             </tbody>
@@ -64,23 +75,11 @@
         </section>
     </div>
 </div>
+<script src="~/Custom/visitor/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="~/Custom/admin/assets/libs/data-tables/datatables.net-bs4/js/dataTables.responsive.min.js"></script>
+<script src="~/Custom/admin/assets/libs/data-tables/datatables.net/js/jquery.dataTables.min.js"></script>
 
-@*@section Styles{*@
-    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
-    <link rel="stylesheet" type="text/css" href="datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css" />
-    <link rel="stylesheet" type="text/css" href="datatables/Buttons-1.4.2/css/buttons.bootstrap4.min.css" />
-    <style>
-        .toolbar {
-            float: left;
-        }
-    </style>
-
-@*}*@
-
-@*@section Scripts{*@
-    <script type="text/javascript" src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-
-    <script type="text/javascript">
+<script type="text/javascript">
         $(document).ready(function () {
             $('.table').DataTable({
                 dom: '<"toolbar">Bfrtip',
@@ -97,6 +96,6 @@
                 location.href = '@Url.Action("Create", "Packages")';
             })*@
         });
-    </script>
+</script>
 
 @*}*@

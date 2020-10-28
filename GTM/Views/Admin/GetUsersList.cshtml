@@ -14,8 +14,8 @@
 
 <head>
     <meta charset="utf-8">
-    <link href="~/Custom/admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
-    <link href="~/Custom/admin/assets/libs/datatables.net-bs4/css/responsive.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Custom/admin/assets/libs/data-tables/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link href="~/Custom/admin/assets/libs/data-tables/datatables.net-bs4/css/responsive.dataTables.min.css" rel="stylesheet" />
 </head>
 
 <div class="wrapper">
@@ -100,7 +100,6 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Perspective)
                                         </td>
-
                                     </tr>
                                 }
 
@@ -126,10 +125,10 @@
 
 
 <!-- jQuery -->
-<script src="~/Custom/admin/js/jquery.min.js"></script>
-<script src="~/Custom/admin/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="~/Custom/admin/assets/libs/datatables.net-bs4/js/dataTables.responsive.min.js"></script>
-
+@*<script src="~/Custom/admin/js/jquery.min.js"></script>*@
+<script src="~/Custom/visitor/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="~/Custom/admin/assets/libs/data-tables/datatables.net-bs4/js/dataTables.responsive.min.js"></script>
+<script src="~/Custom/admin/assets/libs/data-tables/datatables.net/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
 
         $(document).ready(function () {

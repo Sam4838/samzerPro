@@ -130,6 +130,10 @@
     <Content Include="Custom\admin\assets\libs\cloudflare-static\email-decode.min.js" />
     <Content Include="Custom\admin\assets\libs\css-chart\css-chart.css" />
     <Content Include="Custom\admin\assets\libs\d3\dist\d3.min.js" />
+    <Content Include="Custom\admin\assets\libs\data-tables\datatables.net-bs4\css\dataTables.bootstrap4.css" />
+    <Content Include="Custom\admin\assets\libs\data-tables\datatables.net-bs4\css\responsive.dataTables.min.css" />
+    <Content Include="Custom\admin\assets\libs\data-tables\datatables.net-bs4\js\dataTables.responsive.min.js" />
+    <Content Include="Custom\admin\assets\libs\data-tables\datatables.net\js\jquery.dataTables.min.js" />
     <Content Include="Custom\admin\assets\libs\datatables.net-bs4\css\dataTables.bootstrap4.css" />
     <Content Include="Custom\admin\assets\libs\datatables.net-bs4\css\responsive.dataTables.min.css" />
     <Content Include="Custom\admin\assets\libs\datatables.net-bs4\js\dataTables.responsive.min.js" />

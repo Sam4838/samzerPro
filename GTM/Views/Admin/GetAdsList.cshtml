@@ -15,11 +15,8 @@
 </style>
 
 <head>
-
-    @*<link rel="stylesheet" type="text/css" href="datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css" />
-    <link rel="stylesheet" type="text/css" href="datatables/Buttons-1.4.2/css/buttons.bootstrap4.min.css" />*@
-    <link href="~/Custom/admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
-    <link href="~/Custom/admin/assets/libs/datatables.net-bs4/css/responsive.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Custom/admin/assets/libs/data-tables/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link href="~/Custom/admin/assets/libs/data-tables/datatables.net-bs4/css/responsive.dataTables.min.css" rel="stylesheet" />
 </head>
 
 <div class="wrapper">
@@ -84,27 +81,27 @@
 
                             <tbody>
                                 @foreach (var item in Model)
-{
-    <tr style="text-transform: uppercase" onclick="getAdsId('@item.AdvertiseId')">
+                                {
+                                    <tr style="text-transform: uppercase" onclick="getAdsId('@item.AdvertiseId')">
 
-        <td>
+                                        <td>
 
-            @Html.Raw(i++)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
+                                            @Html.Raw(i++)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Title)
+                                        </td>
 
-        <td style="width:360px">
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
+                                        <td style="width:360px">
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.UnitPrice)
-        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UnitPrice)
+                                        </td>
 
-    </tr>
-}
+                                    </tr>
+                                }
 
                             </tbody>
                         </table>
@@ -126,11 +123,9 @@
 </div>
 
 <!-- jQuery -->
-<script src="~/Custom/admin/js/jquery.min.js"></script>
-   
-    <script src="~/Custom/admin/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    
-    <script src="~/Custom/admin/assets/libs/datatables.net-bs4/js/dataTables.responsive.min.js"></script>
+<script src="~/Custom/visitor/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="~/Custom/admin/assets/libs/data-tables/datatables.net-bs4/js/dataTables.responsive.min.js"></script>
+<script src="~/Custom/admin/assets/libs/data-tables/datatables.net/js/jquery.dataTables.min.js"></script>
 <script>
 
 
@@ -144,7 +139,7 @@
         $('.table').DataTable({
             dom: '<"toolbar">Bfrtip',
             "searching": true,
-            "pageLength": 50,
+            "pageLength": 10,
             "lengthChange": false,
             "scrollCollapse": true,
 

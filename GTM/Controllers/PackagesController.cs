@@ -47,32 +47,32 @@ namespace GTM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "packageId,amount,validity,peradClick,perdayEarning,referalBonus,minWithdraw,Title,dailyAds")] PackagesTbl packagesTbl, HttpPostedFileBase pkgImgFile)
+        public ActionResult Create([Bind(Include = "packageId,amount,validity,peradClick,perdayEarning,referalBonus,minWithdraw,Title,dailyAds,PkgImgPath,pkgImgFile")] PackagesTbl packagesTbl, HttpPostedFileBase pkgImgFile)
         {
 
             //if (ModelState.IsValid)
             //{
 
 
-                if (pkgImgFile != null)
-                {
+            if (pkgImgFile != null)
+            {
 
-                    string fileName = Path.GetFileNameWithoutExtension(pkgImgFile.FileName);
-                    string extension = Path.GetExtension(pkgImgFile.FileName);
-                    fileName = fileName + DateTime.Now.ToString("mmyyssff") + extension;
-                    packagesTbl.PkgImgPath = "~/uploads/" + fileName;
-                    fileName = Path.Combine(Server.MapPath("~/uploads/"), fileName);
-                    pkgImgFile.SaveAs(fileName);
+                string fileName = Path.GetFileNameWithoutExtension(pkgImgFile.FileName);
+                string extension = Path.GetExtension(pkgImgFile.FileName);
+                fileName = fileName + DateTime.Now.ToString("mmyyssff") + extension;
+                packagesTbl.PkgImgPath = "~/uploads/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/uploads/"), fileName);
+                pkgImgFile.SaveAs(fileName);
 
-                }
-                else
-                {
+            }
+            else
+            {
 
-                    packagesTbl.PkgImgPath = null;
+                packagesTbl.PkgImgPath = null;
 
-                }
+            }
 
-                db.PackagesTbls.Add(packagesTbl);
+            db.PackagesTbls.Add(packagesTbl);
                 db.SaveChanges();
                 return RedirectToAction("Index");
 

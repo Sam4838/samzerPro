@@ -18,6 +18,8 @@
     <link href="~/Custom/visitor/assets/libs/cahrtist-plugin-tooltips/dist/chartist-plugin-tooltip.css" rel="stylesheet">
     <link href="~/Custom/visitor/assets/libs/c3/c3.min.css" rel="stylesheet">
     <link href="~/Custom/visitor/assets/extra-libs/css-chart/css-chart.css" rel="stylesheet">
+    <link href="~/Custom/admin/assets/libs/data-tables/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link href="~/Custom/admin/assets/libs/data-tables/datatables.net-bs4/css/responsive.dataTables.min.css" rel="stylesheet" />
     <!-- Vector CSS -->
     <link href="~/Custom/visitor/assets/libs/jvectormap/jquery-jvectormap.css" rel="stylesheet" />
     <!-- Custom CSS -->
@@ -59,7 +61,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="/Admin/Index">
+                    <a class="navbar-brand" href="/Home/Index">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -80,11 +82,11 @@
                     <!-- ============================================================== -->
                     <!-- Toggle which is visible on mobile only -->
                     <!-- ============================================================== -->
-                    <a class="topbartoggler d-block d-lg-none waves-effect waves-light" href="javascript:void(0)"
+                    @*<a class="topbartoggler d-block d-lg-none waves-effect waves-light" href="javascript:void(0)"
                        data-toggle="collapse" data-target="#navbarSupportedContent"
                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="ti-more"></i>
-                    </a>
+                    </a>*@
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -162,6 +164,15 @@
                                 </div>
                             </li>
                         }
+                        else
+                        {
+                            <li class="nav-item d-none d-md-block">
+                                <a href="/Account/Login" class="nav-link d-none d-md-block waves-effect waves-dark" href="javascript:void(0)">
+            <i class="fa fa-user"></i>&nbsp; Join Now
+        </a>
+
+                            </li>
+                        }
                             <!-- ============================================================== -->
                             <!-- Language -->
                             <!-- ============================================================== -->
@@ -211,27 +222,32 @@
                         </li>
 
                         @*<li class="nav-small-cap"><i class="fa fa-dots-horizontal"></i> <span class="hide-menu">Tables</span></li>*@
-                        <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fa fa-money-bill-alt"></i><span class="hide-menu">Ways to earn</span></a>
-                            <ul aria-expanded="false" class="collapse first-level">
 
-                                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="table-jsgrid.html" aria-expanded="false"><i class="fa fa-border-top"></i><span class="hide-menu">Our Vision</span></a></li>
-                                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="table-responsive.html" aria-expanded="false"><i class="fa fa-border-style"></i><span class="hide-menu">Packages</span></a></li>
-                                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/Home/WaysToEarn" aria-expanded="false"><i class="fa fa-tab-unselected"></i><span class="hide-menu">Watch Video</span></a></li>
-                                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" data-toggle="modal" data-target="#myModal" aria-expanded="false"><i class="fa fa-border-outside"></i><span class="hide-menu">Terms & Conditions</span></a></li>
-                            </ul>
-                        </li>
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="sidebar-item">
                                 <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fa fa-eye"></i><span class="hide-menu">Watch Ads</span></a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item"><a href="/Home/ViewAds" class="sidebar-link"><i class="fa fa-octagram"></i><span class="hide-menu"> Ads List</span></a></li>
-                                    <li class="sidebar-item"><a href="#" data-toggle="modal" data-target="#myBlncModal"  class="sidebar-link"><i class="fa fa-octagram"></i><span class="hide-menu"> Revenue</span></a></li>
+                                    <li class="sidebar-item"><a href="#" data-toggle="modal" data-target="#myBlncModal" class="sidebar-link"><i class="fa fa-octagram"></i><span class="hide-menu"> Revenue</span></a></li>
                                     <li class="sidebar-item">
 
                                     </li>
                                     <li class="sidebar-item"><a href="/Home/withdrawRec" class="sidebar-link"><i class="fa fa-playlist-check"></i><span class="hide-menu"> Withdraw Funds</span></a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fa fa-money-bill-alt"></i><span class="hide-menu">Ways to earn</span></a>
+                                <ul aria-expanded="false" class="collapse first-level">
+
+                                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="table-jsgrid.html" aria-expanded="false"><i class="fa fa-border-top"></i><span class="hide-menu">Our Vision</span></a></li>
+                                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="table-responsive.html" aria-expanded="false"><i class="fa fa-border-style"></i><span class="hide-menu">Packages</span></a></li>
+                                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/Home/WaysToEarn" aria-expanded="false"><i class="fa fa-tab-unselected"></i><span class="hide-menu">Watch Video</span></a></li>
+                                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" data-toggle="modal" data-target="#myModal" aria-expanded="false"><i class="fa fa-border-outside"></i><span class="hide-menu">Terms & Conditions</span></a></li>
                                 </ul>
                             </li>
                         }
@@ -359,6 +375,8 @@
     <script src="~/Custom/visitor/assets/extra-libs/jvector/jquery-jvectormap-us-aea-en.js"></script>
     <!-- Chart JS -->
     <script src="~/Custom/visitor/dist/js/pages/dashboards/dashboard1.js"></script>
+    <script src="~/Custom/admin/assets/libs/data-tables/datatables.net-bs4/js/dataTables.responsive.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/data-tables/datatables.net/js/jquery.dataTables.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 
