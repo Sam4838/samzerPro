@@ -332,6 +332,7 @@
     <Content Include="Custom\visitor\dist\css\icons\flag-icon-css\flags\in.svg" />
     <Content Include="Custom\visitor\dist\css\icons\flag-icon-css\flags\us.svg" />
     <Content Include="Custom\visitor\dist\css\style.min.css" />
+    <Content Include="Custom\visitor\dist\css\styles.min.css" />
     <Content Include="Custom\visitor\dist\js\pages\app-style-switcher.horizontal.js" />
     <Content Include="Custom\visitor\dist\js\pages\app.init.horizontal.js" />
     <Content Include="Custom\visitor\dist\js\pages\app.min.js" />
@@ -340,6 +341,33 @@
     <Content Include="Custom\visitor\dist\js\pages\dashboards\dashboard1.js" />
     <Content Include="Custom\visitor\dist\js\pages\sidebarmenu.js" />
     <Content Include="Custom\visitor\dist\js\pages\waves.js" />
+    <Content Include="Custom\web\css\bootstrap.css" />
+    <Content Include="Custom\web\css\flexslider.css" />
+    <Content Include="Custom\web\css\font-awesome.css" />
+    <Content Include="Custom\web\css\style.css" />
+    <Content Include="Custom\web\images\1.png" />
+    <Content Include="Custom\web\images\2.png" />
+    <Content Include="Custom\web\images\3.png" />
+    <Content Include="Custom\web\images\ab.jpg" />
+    <Content Include="Custom\web\images\ab2.jpg" />
+    <Content Include="Custom\web\images\banner.jpg" />
+    <Content Include="Custom\web\images\demobar_w3_4thDec2019.css" />
+    <Content Include="Custom\web\images\g7.jpg" />
+    <Content Include="Custom\web\images\g8.jpg" />
+    <Content Include="Custom\web\images\g9.jpg" />
+    <Content Include="Custom\web\images\s1.jpg" />
+    <Content Include="Custom\web\images\services.jpg" />
+    <Content Include="Custom\web\images\t1.jpg" />
+    <Content Include="Custom\web\images\t2.jpg" />
+    <Content Include="Custom\web\images\t3.jpg" />
+    <Content Include="Custom\web\images\t4.jpg" />
+    <Content Include="Custom\web\images\top-up.png" />
+    <Content Include="Custom\web\js\autotrack.js" />
+    <Content Include="Custom\web\js\bootstrap.js" />
+    <Content Include="Custom\web\js\easing.js" />
+    <Content Include="Custom\web\js\jquery-2.1.4.min.js" />
+    <Content Include="Custom\web\js\jquery.flexslider.js" />
+    <Content Include="Custom\web\js\move-top.js" />
     <Content Include="Global.asax" />
     <Content Include="Models\DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -495,6 +523,10 @@
     <Content Include="Custom\visitor\assets\libs\Views\Shared\Error.cshtml" />
     <Content Include="Custom\visitor\assets\libs\Views\web.config" />
     <Content Include="Custom\visitor\assets\libs\toastr\toastr.js.map" />
+    <Content Include="Custom\web\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Custom\web\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Custom\web\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Custom\web\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -536,6 +568,8 @@
     <Content Include="Views\Account\View.cshtml" />
     <Content Include="Views\Home\Terms.cshtml" />
     <Content Include="Views\Packages\Create.cshtml" />
+    <Content Include="Views\Shared\_WebLayout.cshtml" />
+    <Content Include="Views\Home\Testamin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

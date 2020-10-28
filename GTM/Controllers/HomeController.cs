@@ -11,6 +11,16 @@ namespace GTM.Controllers
     {
         makemoneyEntities db = new makemoneyEntities();
         // GET: Home
+        public ActionResult Testamin()
+        {
+            ViewBag.packages = db.PackagesTbls.ToList();
+            return View();
+        }
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
         public ActionResult Index()
         {
             ViewBag.packages = db.PackagesTbls.ToList();
