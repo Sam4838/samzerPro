@@ -220,6 +220,7 @@
     <Content Include="Custom\visitor\assets\images\logo-light-text.png" />
     <Content Include="Custom\visitor\assets\images\logo-text.png" />
     <Content Include="Custom\visitor\assets\images\moneyTimerLogo.jpg" />
+    <Content Include="Custom\visitor\assets\images\notAvlImage.jpg" />
     <Content Include="Custom\visitor\assets\images\slider\Cash-centre.jpg" />
     <Content Include="Custom\visitor\assets\images\slider\Depositphoto.jpg" />
     <Content Include="Custom\visitor\assets\images\slider\easy-money-making-ideas.jpg" />
@@ -545,7 +546,6 @@
     <Content Include="Views\Packages\Edit.cshtml" />
     <Content Include="Views\Packages\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\CreateMsg.cshtml" />
     <Content Include="Views\Home\GetMsg.cshtml" />
     <Content Include="Views\Home\packagePay.cshtml" />
     <Content Include="Views\Home\PageNotFound.cshtml" />

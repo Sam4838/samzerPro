@@ -6,7 +6,7 @@
 }
 
 <head>
-    <link href="~/Custom/admin/css/ads.css" rel="stylesheet" />
+    <link href="~/Custom/admin/dist/css/ads.css" rel="stylesheet" />
     <link href="~/Custom/admin/assets/libs/dropify/dropify.min.css" rel="stylesheet" />
 </head>
 
@@ -89,32 +89,26 @@
                                 <div class=" col-md-4">
                                     <input type="hidden" name="AdvertiseId" />
 
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h4 class="card-title">File Upload</h4>
-                                            @*<label for="input-file-now">Input File</label>*@
-                                            <input type="file" id="input-file-now" class="dropify" name="@Model.AdsFilePath" required />
+
+                                    <input type="file" class="hidden" id="browse-img" accept="image/*" name="AdsImageFile" />
+
+                                    <div class="ads-display-image text-center">
+                                        <img class="ads-default-img img-fluid img-responsive"
+                                             id="uploaded-img"
+                                             src="~/Custom/Visitor/assets/images/notAvlImage.jpg"
+                                             alt="User profile picture">
+
+                                        <div class="upload-photo">
+                                            <img src="~/Custom/Visitor/assets/images/chooseImgIcon.png" />
                                         </div>
+
+
+                                       @* <p class="image-desc text-center">Allowed image size: 723 X 768</p>*@
                                     </div>
-                                    @*<input type="file" class="hidden" id="browse-img" accept="image/*" name="AdsImageFile" />
 
-                                        <div class="ads-display-image text-center">
-                                            <img class="ads-default-img img-fluid img-responsive"
-                                                 id="uploaded-img"
-                                                 src="~/Custom/Visitor/imges/notAvlImage.jpg"
-                                                 alt="User profile picture">
-
-                                            <div class="upload-photo">
-                                                <img src="~/Custom/Visitor/imges/chooseImgIcon.png" />
-                                            </div>
-
-
-                                            <p class="image-desc text-center">Allowed image size: 723 X 768</p>
-                                        </div>
-
-                                        <div class="remove-photo">
-                                            <b>X</b>
-                                        </div>*@
+                                    <div class="remove-photo">
+                                        <b>X</b>
+                                    </div>
 
                                 </div>
 
@@ -145,20 +139,16 @@
 </div>
 
 <!-- jQuery -->
-<script src="~/Custom/admin/js/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="~/Custom/admin/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="~/Custom/admin/js/adminlte.min.js"></script>
+<script src="~/Custom/visitor/assets/libs/jquery/dist/jquery.min.js"></script>
 
 @*<script src="~/Custom/visitor/assets/libs/jquery/dist/jquery.min.js"></script>
-<script src="~/Custom/admin/assets/libs/dropify/dropify.min.js"></script>
-<script src="~/Custom/admin/assets/libs/dropify/sticky-kit.min.js"></script>
-<script type="text/javascript">
-    // To upload a file
-    $('.dropify').dropify();
+    <script src="~/Custom/admin/assets/libs/dropify/dropify.min.js"></script>
+    <script src="~/Custom/admin/assets/libs/dropify/sticky-kit.min.js"></script>
+    <script type="text/javascript">
+        // To upload a file
+        $('.dropify').dropify();
 
-</script>*@
+    </script>*@
 
 
 
@@ -182,7 +172,7 @@
     })
 
     $('.remove-photo').click(function () {
-        $('#uploaded-img').attr('src', "/Custom/Visitor/imges/notAvlImage.jpg")
+        $('#uploaded-img').attr('src', "/Custom/Visitor/assets/imges/notAvlImage.jpg")
         $('#AdsFilePath').val("/uploads/notAvlImage.jpg");
 
     })

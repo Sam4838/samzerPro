@@ -37,7 +37,7 @@ namespace GTM.Controllers
             db.MessageTbls.Add(msg);
             db.SaveChanges();
             
-            return RedirectToAction("CreateMsg");
+            return RedirectToAction("Contact");
         }
 
         public ActionResult GetMsg()

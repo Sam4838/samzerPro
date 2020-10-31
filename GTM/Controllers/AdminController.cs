@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using GTM.Models;
+using System;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using GTM.Models;
 namespace GTM.Controllers
 {
     [Authorize(Roles = "Admin")]
@@ -23,14 +22,27 @@ namespace GTM.Controllers
 
         public ActionResult GetUsersList()
         {
-            var getUsers = db.RegistrationTbls.ToList();
+            var getUsers = db.RegistrationTbls.OrderByDescending(x=>x.UserId).ToList();
+            
 
-            //var getEmpUser = db.RegistrationTbls.FirstOrDefault();
-            //if (getEmpUser.Perspective == "Admin")
+            //var count = db.RegistrationTbls.Where(x=>x.userPackage=="Y" && x.isPaid=="N").Count();
+            //if (count == 0)
             //{
-            //    getEmpUser.ProfileImgPath = "Visitor";
+
+            //    ViewBag.pkgunsub = "Unsubscribed Yet!";
+
             //}
-            return View(getUsers);
+
+                //ViewBag.usrpkg = db.RegistrationTbls.ToList();
+                //foreach (var item in getUsers)
+                //{
+                //    foreach (var i in item.userPackages)
+                //    {
+                //        ViewBag.usrpkg= i.isPaid;
+                //    }
+                //}
+
+                return View(getUsers);
         }
 
         public ActionResult GetUsersDetails(int? id)
@@ -102,8 +114,9 @@ namespace GTM.Controllers
 
         [HttpPost]
 
-        public ActionResult CreateAds(AdvertiseTbl advertise, HttpPostedFileBase AdsImageFile)
+        public ActionResult CreateAds(AdvertiseTbl advertise)
         {
+            HttpPostedFileBase AdsImageFile = Request.Files[0];
 
             if (AdsImageFile != null)
             {
@@ -155,8 +168,9 @@ namespace GTM.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditAds(AdvertiseTbl advertise, HttpPostedFileBase AdsImageFile)
+        public ActionResult EditAds(AdvertiseTbl advertise)
         {
+            HttpPostedFileBase AdsImageFile = Request.Files[0];
 
             if (AdsImageFile != null)
             {

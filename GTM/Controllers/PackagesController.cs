@@ -47,11 +47,12 @@ namespace GTM.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "packageId,amount,validity,peradClick,perdayEarning,referalBonus,minWithdraw,Title,dailyAds,PkgImgPath,pkgImgFile")] PackagesTbl packagesTbl, HttpPostedFileBase pkgImgFile)
+        public ActionResult Create([Bind(Include = "packageId,amount,validity,peradClick,perdayEarning,referalBonus,minWithdraw,Title,dailyAds,PkgImgPath")] PackagesTbl packagesTbl)
         {
 
             //if (ModelState.IsValid)
             //{
+            HttpPostedFileBase pkgImgFile = Request.Files[0];
 
 
             if (pkgImgFile != null)
@@ -88,6 +89,10 @@ namespace GTM.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PackagesTbl packagesTbl = db.PackagesTbls.Find(id);
+            if (packagesTbl.PkgImgPath==null)
+            {
+                packagesTbl.PkgImgPath = "~/uploads/notAvlImage.jpg";
+            }
             if (packagesTbl == null)
             {
                 return HttpNotFound();
@@ -102,12 +107,34 @@ namespace GTM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "packageId,amount,validity,peradClick,perdayEarning,referalBonus,minWithdraw,Title,dailyAds")] PackagesTbl packagesTbl)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
+                HttpPostedFileBase pkgImgFile = Request.Files[0];
+
+
+                if (pkgImgFile != null)
+                {
+
+                    string fileName = Path.GetFileNameWithoutExtension(pkgImgFile.FileName);
+                    string extension = Path.GetExtension(pkgImgFile.FileName);
+                    fileName = fileName + DateTime.Now.ToString("mmyyssff") + extension;
+                    packagesTbl.PkgImgPath = "~/uploads/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/uploads/"), fileName);
+                    pkgImgFile.SaveAs(fileName);
+
+                }
+                else
+                {
+
+                    packagesTbl.PkgImgPath = null;
+
+                }
+
+
                 db.Entry(packagesTbl).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+            //}
             return View(packagesTbl);
         }
 
