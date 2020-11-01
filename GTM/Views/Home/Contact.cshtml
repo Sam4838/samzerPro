@@ -1,4 +1,5 @@
-﻿
+﻿@model GTM.Models.MessageTbl
+
 @{
     ViewBag.Title = "Contact";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,6 +10,8 @@
     @*<link href="~/Custom/web/css/font-awesome.css" rel="stylesheet">*@
 
     <link href="~/Custom/web/css/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/Custom/visitor/assets/libs/toastr/toastr.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/Custom/visitor/assets/libs/toastr/toastr.min.css" rel="stylesheet" type="text/css" media="all">
 
 </head>
 <div class="card card-body">
@@ -31,28 +34,39 @@
     <div class="row">
 
         <div class="col-md-4">
-            <form action="CreateMsg" method="post">
-                <input class="form-control" type="text" name="FullName" placeholder="Name" required="">
-                <input class="form-control email" type="email" name="Email" placeholder="Email" required="">
-                <textarea class="form-control" name="Message" placeholder="Message" rows="4" required=""></textarea>
+            <form method="post" id="msgForm">
+                @*@using (Html.BeginForm("CreateMsg","Home",FormMethod.Post, new { id = "mcnForm" }))
+        {*@
+                <input class="form-control" type="text" id="fname-id" name="FullName" placeholder="Your Name" required>
+                <input class="form-control email" type="email" id="email-id" name="Email" placeholder="Email" required>
+                <textarea class="form-control" id="msg-id" name="Message" placeholder="Message" rows="4" required></textarea>
                 <br />
-                @*<input type="submit" class="btn btn-success" value="SEND">*@
-                <button class="btn btn-success" id="submit_btn">Send</button>
+                <div>
+                    <input type="submit" class="btn btn-primary" value="Send Message" />
+                </div>
+
+                @*@Html.TextBoxFor(model=>model.FullName, new { @class="form-control", id="fname-id", placeholder="Name" })<br />
+            @Html.TextBoxFor(model=>model.Email, new { @class="form-control", id="email-id", placeholder="Email"})<br />
+            @Html.TextAreaFor(model=>model.Message, new { @class = "form-control", id = "msg-id", rows = "4", placeholder = "Message" })<br />
+        <div>
+            <input type="submit" class="btn btn-primary" value="Send Message" />
+        </div>
+        }*@
             </form>
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-6">
             <div class="address">
                 <h5>Address:</h5>
-                <p><i class="fa fa-home"></i> Sector-C Bahria Town LHR, PK +92 </p>
+                <p><i class="fa fa-home fa-lg"></i> Sector-C Bahria Town LHR, PK +92 </p>
             </div>
             <div class="address address-mdl">
                 <h5>Phones:</h5>
-                <p><i class="fa fa-phone "></i> +92 300 0000000</p>
+                <p><i class="fa fa-phone fa-lg"></i> +92 300 0000000</p>
             </div>
             <div class="address">
                 <h5>Email:</h5>
-                <p><i class="fa fa-envelope "></i> <a href="mailto:info@example.com">mail@example.com</a></p>
+                <p><i class="fa fa-envelope fa-lg "></i> <a href="mailto:info@example.com"> mail@example.com</a></p>
             </div>
 
         </div>
@@ -73,28 +87,67 @@
 
 <!-- jQuery -->
 <script src="~/Custom/visitor/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="~/Custom/visitor/assets/libs/toastr/toastr.min.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#submit_btn').click(function () {
+   
+    $("#msgForm").submit(function (e) {
+        e.preventDefault();
+        var name = $("#fname-id").val();
+        var email = $("#email-id").val();
+        var msg = $("#msg-id").val();
+        var obj = {
+            Name: name,
+            Email: email,
+            Message: msg
+        }
 
-            // This prevents the form from submitting
-            event.preventDefault();
+        $.ajax({
+            url: "/Home/CreateMsg",
+            method: "post",
+            data: obj
+        })
+            .done(function () {
+                $(this).find("input").val("");
+                $("#msgForm").trigger("reset");
+                
+                toastr.success("Message sent");
 
-            // Capture form input
-            var $form = $(this);
-            var serializedData = $form.serialize();
+            })
+            .fail(function () {
 
-            // Run the ajax post
-            $.ajax({
-                url: "/Home/CreateMsg",
-                type: "POST",
-                data: serializedData
-                success: function (response) {
-                    // Do something
-                }
+                toastr.error("Sending fail!")
             });
 
-        });//end click
-    });//end rdy
+        return false;
+    });
+
+    //$(document).ready(function () {
+    //    $('#submit_btn').click(function () {
+
+    //        var fname = $("#fname-id").val();
+    //        var email = $("#email-id").val();
+    //        var msg = $("#msg-id").val();
+    //        var obj = {
+    //            FName: fname,
+    //            Email: email,
+    //            Message: msg
+    //        }
+    //        submitForm(obj);
+    //    });
+    //    //end click
+    //});
+    ////end rdy
+    //function submitForm(obj) {
+
+    //    $.ajax({
+    //        url:"/Home/CreateMsg" ,
+    //        type: "POST",
+    //        data: obj,
+            
+    //    }).done(function () {
+    //        alert("sent successfuly!");
+    //    });
+
+    //}
 </script>

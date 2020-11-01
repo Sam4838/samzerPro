@@ -36,8 +36,9 @@ namespace GTM.Controllers
             
             db.MessageTbls.Add(msg);
             db.SaveChanges();
-            
-            return RedirectToAction("Contact");
+
+            //return RedirectToAction("Contact");
+            return Json(/*new { success = true, message = "Sent Successfuly" },*/ JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetMsg()
