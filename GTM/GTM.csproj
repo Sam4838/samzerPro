@@ -337,7 +337,7 @@
     <Content Include="Custom\visitor\dist\css\icons\flag-icon-css\flags\in.svg" />
     <Content Include="Custom\visitor\dist\css\icons\flag-icon-css\flags\us.svg" />
     <Content Include="Custom\visitor\dist\css\style.min.css" />
-    <Content Include="Custom\visitor\dist\css\styles.min.css" />
+    <Content Include="Custom\visitor\dist\css\styls.min.css" />
     <Content Include="Custom\visitor\dist\js\pages\app-style-switcher.horizontal.js" />
     <Content Include="Custom\visitor\dist\js\pages\app.init.horizontal.js" />
     <Content Include="Custom\visitor\dist\js\pages\app.min.js" />

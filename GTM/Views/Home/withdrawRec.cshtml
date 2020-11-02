@@ -4,6 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<head>
+    <link href="~/Custom/web/css/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/Custom/visitor/assets/libs/toastr/toastr.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/Custom/visitor/assets/libs/toastr/toastr.min.css" rel="stylesheet" type="text/css" media="all">
+</head>
+
 <div class="wrapper">
 
     <div class="content-wrapper">
@@ -33,22 +39,22 @@
                         <div class="row">
                             <div class="col-md-4"></div>
                             <div class="col-md-4 text-center">
-                                <form action="/Home/withdrawRec" method="post">
+                                <form method="post" id="withdrawalForm">
                                     <label>Enter amount to withdraw:</label>
-                                    
+
                                     <div class="form-group">
                                         @*<label>Enter amount to withdraw:</label>*@
-                                        <input class="form-control" type="number" @*min="500" max="5000"*@ name="Amount" step="any" required />
+                                        <input class="form-control" type="number" @*min="500" max="5000"*@ id="amount-id" name="Amount" step="any" required />
                                     </div>
                                     <label>Enter Phone No: (JazzCash/EasyPaisa)</label>
                                     <div class="form-group">
-                                        <input class="form-control" type="tel" name="phoneNo" pattern="[0-9]{11}" placeholder="03XX-XXXXXXX" required />
+                                        <input class="form-control" type="tel" name="phoneNo" id="phone-id" pattern="[0-9]{11}" placeholder="03XX-XXXXXXX" required />
                                     </div>
-                                    <input class="btn btn-primary"  type="submit" value="Submit" />
+                                    <input class="btn btn-primary" type="submit" value="Submit" />
                                 </form>
                             </div>
                             <div class="col-md-4"></div>
-                           
+
 
                         </div>
                     </div>
@@ -68,14 +74,52 @@
 </div>
 
 @*<div class="container">
-    <form action="/Home/withdrawRec" method="post">
-        <label>Enter amount to withdraw:</label>
-        <input type="number" name="Amount" step="any" />
-        <br />
-        <label>Enter Phone No:</label>
-        <input type="tel" name="phoneNo" pattern="[0-9]{11}" placeholder="03XX-XXXXXXX" />
+        <form action="/Home/withdrawRec" method="post">
+            <label>Enter amount to withdraw:</label>
+            <input type="number" name="Amount" step="any" />
+            <br />
+            <label>Enter Phone No:</label>
+            <input type="tel" name="phoneNo" pattern="[0-9]{11}" placeholder="03XX-XXXXXXX" />
 
-        <input type="submit" value="Submit" />
-    </form>
-</div>*@
+            <input type="submit" value="Submit" />
+        </form>
+    </div>*@
+
+<!-- jQuery -->
+<script src="~/Custom/visitor/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="~/Custom/visitor/assets/libs/toastr/toastr.min.js"></script>
+
+<script type="text/javascript">
+
+    $("#withdrawalForm").submit(function (e) {
+        e.preventDefault();
+        var amount = $("#amount-id").val();
+        var phone = $("#phone-id").val();
+        var obj = {
+            Amount: amount,
+            Phone: phone
+        }
+
+        $.ajax({
+            url: "/Home/withdrawRec",
+            method: "post",
+            data: obj
+        })
+            .done(function () {
+                $(this).find("input").val("");
+                $("#withdrawalForm").trigger("reset");
+
+                toastr.success("Request sent!");
+
+            })
+            .fail(function () {
+
+                toastr.error("Sending fail!")
+            });
+
+        return false;
+    });
+    
+</script>
+
 
